@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+    <title>RentCar | Home</title>
+</head>
+
+
+<style>
+    .bg-nav {
+        background-image: url('../static/images/nav.jpg');
+        border-radius: 0px 0px 30px 30px;
+        background-position: left top;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-blend-mode: normal;
+        will-change: transform;
+        height: 400px;
+    }
+
+    .navbar {
+        padding: 1rem;
+        background-color: transparent;
+    }
+
+    .navbar-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+    }
+
+    .navbar-item {
+        margin-left: 1rem;
+        color: white;
+        border-radius: 20px;
+    }
+
+    .is-lihat {
+        background-color: #EDF1D6;
+        color: #40513B;
+        border-radius: 10px;
+        border: none;
+        font-weight: bold;
+        height: 50px;
+        margin-top: 2.5rem;
+    }
+
+    .is-lihat:hover {
+        background-color: #dfeb9a;
+    }
+
+    .is-daftar {
+        background-color: #609966;
+        color: white;
+        border-radius: 20px;
+        border: none;
+    }
+
+    .is-daftar:hover {
+        background-color: white;
+    }
+
+    .is-masuk {
+        background-color: transparent;
+        color: white;
+        border: none;
+    }
+
+    .is-masuk:hover {
+        background-color: white;
+        border-radius: 20px;
+    }
+
+    .is-btn-delete {
+        background-color: #FF0060;
+        border-radius: 20px;
+        color: white;
+        border: none;
+    }
+
+    .is-btn-delete:hover {
+        background-color: #ee035d;
+        color: white;
+    }
+
+    .navbar-burger {
+        color: #609966;
+    }
+
+    .navbar-burger:hover {
+        color: white;
+    }
+
+    .is-light {
+        color: white;
+    }
+
+    .content-main {
+        margin-left: 2.5rem;
+        margin-top: 2.5rem;
+        margin-right: 2.5rem;
+    }
+
+    .perintah {
+        margin-bottom: 2.5rem;
+    }
+
+    .promosi {
+        margin-top: 2.5rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .card-content {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 4;
+        overflow: hidden;
+    }
+
+    .card-content p {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        max-height: 3.6em;
+        line-height: 1.2em;
+    }
+
+    footer {
+        bottom: 0;
+        background-color: #81867f;
+    }
+
+    .is-footer-link {
+        background-color: transparent;
+        color: white;
+        border: none;
+    }
+
+    .is-footer-link:hover {
+        color: #EDF1D6;
+    }
+
+    .is-user-info {
+        background-color: transparent;
+        border: none;
+        color: white;
+    }
+
+    .is-user-info:hover {
+        background-color: white;
+        border: none;
+        color: #40513B;
+        border-radius: 20px;
+    }
+
+    @media screen and (max-width: 768px) {
+        .navbar-start {
+            flex-direction: column;
+            margin-left: 0;
+            align-items: start;
+            margin-right: 2.5rem;
+            margin-top: 1rem;
+        }
+
+        .is-4 {
+            width: 80px;
+        }
+
+        .is-daftar {
+            color: #40513B;
+            background-color: #EDF1D6;
+        }
+
+        .is-daftar:hover {
+            background-color: #40513B;
+            color: white;
+        }
+
+        .navbar-item {
+            color: #40513B;
+        }
+
+        .is-masuk {
+            border-radius: 20px;
+            background-color: #40513B;
+            color: #EDF1D6;
+        }
+
+        .is-masuk:hover {
+            color: #40513B;
+            background-color: #EDF1D6;
+        }
+
+        .image-liburan {
+            width: 100%;
+        }
+
+        .is-user-info {
+            background-color: transparent;
+            border: none;
+            color: #40513B;
+        }
+
+        .is-user-info:hover{
+            background-color: #40513B;
+            border: none;
+            color: white;
+            border-radius: 20px;
+        }
+    }
+</style>
+
+<body>
+
+    <div class="bg-nav">
+        <nav class="navbar" id="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                    <img src="../static/images/rentcar.png" alt="" class="title is-4 is-logo">
+                </a>
+
+                <!-- Toggle button for mobile -->
+                <a role="button" class="navbar-burger is-light" aria-label="menu" aria-expanded="false"
+                    data-target="navbarBasicExample" onclick="toggleNavbar()">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start navbar-center">
+                    <a class="navbar-item home" href="/">Home</a>
+                    <a class="navbar-item" href="#cara-pemesanan">Cara pemesanan</a>
+                    <a class="navbar-item" href="#">Syarat&Ketentuan</a>
+                    <a class="navbar-item" href="#">About</a>
+                    <a class="navbar-item" href="#">Contact</a>
+                    <a class="navbar-item" href="#">Cek Pesanan</a>
+                    {% if logged_in %}
+                    {% if is_admin %}
+                    <a class="navbar-item" href="/wisata/bookings">Cek Pesanan</a>
+                    {% else %}
+                    <a class="navbar-item" href="/cekpesanan/{{user_info.name}}">Cek Pesanan</a>
+                    {% endif %}
+                    {% endif %}
+                </div>
+
+                {% if not logged_in %}
+                <div class="navbar-end navbar-auth">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a class="button is-masuk" href="/signin">Masuk</a>
+                            <a class="button is-daftar" href="/signup">Daftar</a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if logged_in %}
+                <div class="navbar-end navbar-auth">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a class="button is-user-info">{{ user_info.name }}</a>
+                            <a class="button is-btn-delete" onclick="sign_out()">Logout</a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </nav>
+
+        <section class="section">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column is-half">
+                        <div class="jumbotron">
+                            <h2 class="title is-3 has-text-centered is-light"><span class="has-text-weight-light"></span>Syarat&Ketentuan</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="content-main">
+     <section class="promosi">
+         <div class="columns is-flex is-justify-content-center">
+             <div class="column is-8 content content-box">
+                 <h2 class="title" style="font-weight: bold; text-align: center;">Syarat dan Ketentuan</h2>
+                 <!-- Teks tambahan -->
+                 <p style="text-align: justify;">
+                    <h2>Penyewa dilarang melakukan :</h2>
+                    <ol>
+                     <li>Menggadaikan kendaraan</li>
+                     <li>Menyewakan kembali kepada orang lain</li>
+                     <li>Menjual kendaraan</li>
+                     <li>Memindah tangankan sewa</li>
+                     <li>Menggunakan mobil untuk tindak kejahatan</li>
+                     <li>Menaikan harga sewa dari penawaran kami (Mark Up)</li>
+                     <li>Kendaraan hanya dapat dikemudikan oleh orang yang memiliki SIM</li>
+                     <li>Dilarang meninggalkan STNK, kunci kontak, dan karcis parkir di dalam kendaraan yang sedang diparkir</li>
+                     <li>Masa sewa 1 bulan dihitung 30 hari</li>
+                     <li>Penggantian kendaraan tidak berlaku jika kerusakan/kecelakaan diakibatkan kelalaian penyewa</li>
+                     <li>Penyewaan tanpa supir diwajibkan untuk memonitor perawatan kendaraan</li>
+                    </ol>
+                    <h2>Persyaratan sewa kendaraan untuk perusahaan :</h2>
+                    <ol>
+                    <li>Fotokopi SIUP dan NPWP</li>
+                    <li>Fotokopi akte pendirian perusahaan</li>
+                    <li>Fotokopi Tanda Daftar perusahaan</li>
+                    <li>Surat keterangan domisili perusahaan</li>
+                    <li>Surat pemesanan kendaraan</li>
+                    <li>Fotokopi pemohon</li>
+                    <li>Fotokopi KTP direksi, atau pejabat yang bertanggung jawab</li>
+                    <li>Fotokopi SIM pengemudi</li>
+                    <li>Bersedia untuk kami survey kantor dan tempat tinggal pemohon</li>
+                    <li>Membayar uang deposit sebagai jaminan asuransi (dikembalikan di akhir sewa)</li>
+               </ol>
+               <h2>Persyaratan sewa kendaraan untuk perorangan :</h2>
+               <ol>
+                   <li>Mengisi formulir biodata penyewa</li>
+                   <li>Fotokopi bukti kepemilikan rumah atau tempat tinggal</li>
+                   <li>Fotokopi PBB</li>
+                   <li>Fotokopi NPWP</li>
+                   <li>Fotokopi KTP, KK, Pasport atau KITAS (pemohon dan penjamin)</li>
+                   <li>Bersedia untuk kami survey alamat dan tempat tinggal anda</li>
+                   <li>Memiliki penjamin</li>
+                   <li>Fotokopi SIM pengemudi</li>
+                   <li>Pas foto 4 x 6 atau gambar diri lainnya</li>
+                   <li>Membayar uang deposit sebagai jaminan asuransi (dikembalikan di akhir sewa)</li>
+               </ol>
+                    </p>
+             </div>
+         </div>
+     </section>
+ </div>
+</div>
+   
+</body>
+</html>
