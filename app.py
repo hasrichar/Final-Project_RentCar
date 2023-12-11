@@ -45,12 +45,12 @@ def main():
         is_admin = user_info.get("category") == "admin"
         logged_in = True
         print(user_info)
-        return render_template('syarat&ketentuan.html', user_info=user_info, logged_in = logged_in, is_admin = is_admin)
+        return render_template('home.html', user_info=user_info, logged_in = logged_in, is_admin = is_admin)
     except jwt.ExpiredSignatureError:
         msg = 'Your token has expired'
     except jwt.exceptions.DecodeError:
         msg = 'There was a problem logging you in'
-    return render_template('syarat&ketentuan.html', msg=msg)
+    return render_template('home.html', msg=msg)
 
 @app.route('/signup')
 def signup():
@@ -108,6 +108,12 @@ def sign_in():
                 "msg": "We could not find a user with that id/password combination",
             }
         )
+
+@app.route('/syarat&ketentuan')
+def syaratketentuan():
+    return render_template('syarat&ketentuan.html')
+
+
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)

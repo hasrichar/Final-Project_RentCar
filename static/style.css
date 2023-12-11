@@ -15,6 +15,16 @@
     border-radius: 20px;
 }
 
+.navbar a {
+    text-decoration: none;
+}
+
+.navbar-item ul {
+    margin-left: 1rem;
+    color: white;
+    border-radius: 20px;
+}
+
 .is-daftar {
     color: #40513B;
     border-radius: 20px;
