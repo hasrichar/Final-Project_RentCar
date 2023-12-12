@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="{{ url_for('static', filename='images/1.png') }}" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ url_for('static', filename='index.js') }}"></script>
@@ -18,7 +19,7 @@
     crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-JM66DMBuv+DoN3UWjb30ViFzv5fWk74+I3eB9NFVUhUhkK95IPWiZlnN3cPVmMR7IeTJ3jpsCYpBc0mPx9szAg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <title>RentCar | Home</title>
+    <title>RentCar | About</title>
 </head>
 
 
@@ -288,18 +289,17 @@
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start navbar-center">
                     <a class="navbar-item home" href="/">Home</a>
-                        <li class="navbar-item dropdown"> 
-                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
-                            Informasi Layanan
-                            </a>
-                            <ul class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Cara Pemesanan</a>
-                                <a class="dropdown-item" href="syarat&ketentuan.html">Syarat & Ketentuan</a>
-                            </ul>
-                        </li>
-
-                    <a class="navbar-item" href="#">About</a>
-                    <a class="navbar-item" href="#">Contact</a>
+                    <li class="navbar-item dropdown"> 
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+                        Informasi Layanan
+                        </a>
+                        <ul class="dropdown-menu">
+                            <a class="dropdown-item" href="/carapemesanan">Cara Pemesanan</a>
+                            <a class="dropdown-item" href="/syaratketentuan">Syarat & Ketentuan</a>
+                        </ul>
+                    </li>
+                    <a class="navbar-item" href="/about">About</a>
+                    <a class="navbar-item" href="/contact">Contact</a>
 
                     {% if logged_in %}
                     {% if is_admin %}
