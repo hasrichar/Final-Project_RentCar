@@ -59,6 +59,67 @@ function sign_in() {
         },
     });
 }
+
+function admin_signup() {
+    let name = $("#name").val();
+    let email = $("#email").val();
+    let password = $("#password").val();
+
+    if (name == '' || email == '' || password == '') {
+        Swal.fire(
+            'Oops',
+            'Data tidak lengkap!',
+            'error'
+        )
+    } else {
+        $.ajax({
+            type: "POST",
+            url: "/sign_up/admin",
+            data: {
+                name: name,
+                email: email,
+                password: password
+            },
+            success: function (response) {
+                Swal.fire(
+                    'Done',
+                    'You are signed up, nice!',
+                    'success'
+                )
+                window.location.replace("/signin/admin");
+            },
+        });
+    }
+
+
+}
+function admin_sign_in() {
+    let email = $("#email").val();
+    let password = $("#password").val();
+
+    $.ajax({
+        type: "POST",
+        url: "/sign_in/admin",
+        data: {
+            email: email,
+            password: password,
+        },
+        success: function (response) {
+            if (response["result"] === "success") {
+                $.cookie("mytoken", response["token"], { path: "/" });
+                window.location.replace("/");
+            } else {
+                // alert(response["msg"]);
+                Swal.fire(
+                    'Oops',
+                    response["msg"],
+                    'error'
+                )
+            }
+        },
+    });
+}
+
 function sign_out() {
     $.removeCookie("mytoken", { path: "/" });
     alert("Logged out!");

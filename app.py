@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, url_for, jsonify, make_response, current_app
+from flask import Flask, request, render_template, redirect, url_for, jsonify
 from pymongo import MongoClient
 import requests
 import hashlib
@@ -109,9 +109,92 @@ def sign_in():
             }
         )
 
-@app.route('/syarat&ketentuan')
+@app.route('/signup/admin')
+def admin_signup():
+    return render_template('admin_register.html')
+
+@app.route('/sign_up/admin', methods=['POST'])
+def admin_sign_up():
+    name = request.form.get('name')
+    email = request.form.get('email')
+    password = request.form.get('password')
+    password_hash = hashlib.sha256(password.encode('utf-8')).hexdigest()
+
+    doc = {
+        "name": name,
+        "email": email,
+        "category": 'admin', 
+        "password": password_hash
+    }
+
+    db.admin.insert_one(doc)
+    return jsonify({'result': 'success'})
+
+@app.route('/signin/admin')
+def admin_signin():
+    return render_template('admin_login.html')
+
+@app.route('/sign_in/admin', methods=['POST'])
+def admin_sign_in():
+    admin_email = request.form["email"]
+    admin_password = request.form["password"]
+    print(admin_email)
+    admin_pw_hash = hashlib.sha256(admin_password.encode("utf-8")).hexdigest()
+    print(admin_pw_hash)
+    result = db.admin.find_one(
+        {
+            "email": admin_email,
+            "password": admin_pw_hash,
+            "category": "admin" 
+        }
+    )
+    if result:
+        payload = {
+            "id": admin_email,
+            "exp": datetime.utcnow() + timedelta(seconds=60 * 60 * 24),
+        }
+        token = jwt.encode(payload, SECRET_KEY, algorithm="HS256")
+
+        return jsonify(
+            {
+                "result": "success",
+                "token": token,
+            }
+        )
+    else:
+        return jsonify(
+            {
+                "result": "fail",
+                "msg": "We could not find an admin with that id/password combination",
+            }
+        )
+    
+@app.route('/syaratketentuan')
 def syaratketentuan():
-    return render_template('syarat&ketentuan.html')
+    return render_template('syaratketentuan.html')
+
+@app.route('/carapemesanan')
+def carapemesanan():
+    return render_template('cara_pemesanan.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+    
+@app.route('/contact/save', methods=['POST'])
+def contact_save():
+    nama = request.form.get('nama')
+    email = request.form.get('email')
+    pesan = request.form.get('pesan')
+
+    doc = {
+        "nama": nama,
+        "email": email, 
+        "pesan": pesan
+    }
+
+    db.contact.insert_one(doc)
+    return jsonify({'result': 'success'})
 
 
 

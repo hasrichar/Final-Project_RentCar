@@ -9,11 +9,10 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/de152fe019.js" crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='index.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
     <!-- <link rel="stylesheet" href="../static/style.css"> -->
-    <title>RentCar | Login</title>
+    <title>RentCar | Register</title>
 </head>
 <script>
     function toggleNavbar() {
@@ -77,11 +76,18 @@
                         <div class="column left">
                             <img src="../static/images/rentcar-hitam.png" alt="" class="title is-4">
                             <h2 class="subtitle colored is-4">Penyewaan mobil mudah & nyaman</h2>
-                            <p>Login mudah cukup menggunakan e-mail</p>
+                            <p>Daftar mudah cukup menggunakan e-mail</p>
                         </div>
                         <div class="column right has-text-centered">
-                            <h1 class="title is-4">Login sekarang!</h1>
-                            <p class="description">Login dan nikmati fitur penuh website kami!</p>
+                            <h1 class="title is-4">Daftar Sekarang!</h1>
+                            <p class="description">Buat akun dan nikmati fitur penuh website kami!</p>
+
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input is-medium is-input-reg" type="text" placeholder="Nama"
+                                        id="name">
+                                </div>
+                            </div>
 
                             <div class="field">
                                 <div class="control">
@@ -96,12 +102,10 @@
                                         id="password">
                                 </div>
                             </div>
-                            <button class="button is-block is-fullwidth is-medium is-btn-regis"
-                                onclick="sign_in()">Login</button>
+                            <button class="button is-block is-fullwidth is-medium is-btn-regis" onclick="admin_signup()">Register</button>
                             <br />
-                            <small><em>Belum punya akun?</em><em><a href="/signup"> Register</a></em></small>
+                            <small><em>Login Admin</em><em><a href="/signin/admin"> Login</a></em></small>
                             <br />
-                            <small><em>Admin? <a href="/signin/admin">Login</a></em></small>
 
                         </div>
                     </div>

@@ -17,27 +17,22 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>RentCar | Home</title>
+    <title>RentCar | Cara Pemesanan</title>
 </head>
 
 
 <style>
     .bg-nav {
-        position: relative;
-        overflow: hidden;
+        background-image: url('../static/images/gambar4.jpg');
         border-radius: 0px 0px 30px 30px;
+        background-position: left top;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-blend-mode: normal;
+        will-change: transform;
         height: 400px;
-}
-
-    .bg-nav video {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-}
+    }
 
     .navbar {
         padding: 1rem;
@@ -158,6 +153,10 @@
         line-height: 1.2em;
     }
 
+    footer {
+        bottom: 0;
+        background-color: #81867f;
+    }
 
     .is-footer-link {
         background-color: transparent;
@@ -173,32 +172,6 @@
         background-color: transparent;
         border: none;
         color: white;
-    }
-    /* Footer */
-    footer {
-    padding: 50px 0px 50px 0px;
-    background-color: #343640;
-    color: #fff;
-    }
-    footer .layar-dalam {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    }
-    footer .layar-dalam div {
-    width: 20%;
-    }
-    footer .layar-dalam h5 {
-    margin-top: 0px;
-    font-size: 20px;
-    font-weight: bold;
-    }
-    footer .layar-dalam .copyright {
-    width: 100%;
-    margin-top: 30px;
-    padding-top: 30px;
-    border-top: 1px solid #666;
-    text-align: center;
     }
 
     .is-user-info:hover {
@@ -268,9 +241,6 @@
 <body>
 
     <div class="bg-nav">
-        <video autoplay muted loop>
-            <source src="../static/images/mobil.mp4" type="video/mp4" />
-          </video>
         <nav class="navbar" id="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
                 <a class="navbar-item" href="/">
@@ -285,25 +255,25 @@
                     <span aria-hidden="true"></span>
                 </a>
             </div>
+
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start navbar-center">
                     <a class="navbar-item home" href="/">Home</a>
-                        <li class="navbar-item dropdown"> 
-                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
-                            Informasi Layanan
-                            </a>
-                            <ul class="dropdown-menu">
-                                <a class="dropdown-item" href="/carapemesanan">Cara Pemesanan</a>
-                                <a class="dropdown-item" href="/syaratketentuan">Syarat & Ketentuan</a>
-                            </ul>
-                        </li>
-
+                    <li class="navbar-item dropdown"> 
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+                        Informasi Layanan
+                        </a>
+                        <ul class="dropdown-menu">
+                            <a class="dropdown-item" href="/carapemesanan">Cara Pemesanan</a>
+                            <a class="dropdown-item" href="/syaratketentuan">Syarat & Ketentuan</a>
+                        </ul>
+                    </li>
                     <a class="navbar-item" href="#">About</a>
                     <a class="navbar-item" href="/contact">Contact</a>
 
                     {% if logged_in %}
                     {% if is_admin %}
-                    <a class="navbar-item" href="#">Cek Pesanan</a>
+                    <a class="navbar-item" href="/wisata/bookings">Cek Pesanan</a>
                     {% else %}
                     <a class="navbar-item" href="/cekpesanan/{{user_info.name}}">Cek Pesanan</a>
                     {% endif %}
@@ -338,106 +308,51 @@
                 <div class="columns is-centered">
                     <div class="column is-half">
                         <div class="jumbotron">
-                            <h2 class="title is-3 has-text-centered is-light"><span class="has-text-weight-light">Hai,
-                                     </span> Selamat Datang di RentCar</h2>
+                            <h2 class="title is-3 has-text-centered is-light"><span class="has-text-weight-light"></span> Cara Pemesanan</h2>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
     </div>
-
     <div class="content-main">
-        <section class="">
-            <div class="intro perintah">
-                <h2 class="title">Pilihan dan Harga Rental Mobil</h2>
-                <p class="subtitle is-6">Berikut adalah detail unit yang kami sediakan dengan harga sewanya</p>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card" style="width: 20rem;">
-                        <img src="../static/images/gambar3.jpg" class="card-img-top" alt="Innova Zenix"
-                             style="height: 200px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">Xpander</h5>
-                            <p class="card-text">Start From Rp. 700.0000/Hari</p>
-                            <a href="../templates/detail.html" class="btn btn-primary">Sewa</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card" style="width: 20rem;">
-                        <img src="../static/images/gambar5.jpg" class="card-img-top" alt="Alphard / Vellfire type G"
-                             style="height: 200px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">Gallardo</h5>
-                            <p class="card-text">Start From Rp. 100.000.000/Hari</p>
-                            <a href="../templates/detail.html" class="btn btn-primary">Sewa</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card" style="width: 20rem;">
-                        <img src="../static/images/gambar6.jpg" class="card-img-top" alt="Innova Zenix"
-                             style="height: 200px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">Skyline</h5>
-                            <p class="card-text">Start From Rp. 80.0000.000/Hari</p>
-                            <a href="../templates/detail.html" class="btn btn-primary">Sewa</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-    
-        <section class="promosi">
-            <div class="columns">
-                <div class="column is-4 image image-liburan">
-                    <img src="../static/images/nice.jpg" alt="">
-                </div>
-                <div class="column is-8 content">
-                    <h2 class="title">Yuukk nikmati perjalananmu dengan sewa mobil di RentCar</h2>
-                    <p style="text-align: justify;">Nikmati pengalaman sewa mobil yang lebih mudah dan
-                        nyaman dengan website kami!
-                        Lupakan kelelahan antri di loket tiket konvensional, karena dengan layanan kami,
-                        Anda dapat sewa mobil favorit Anda secara online dengan beberapa kali klik
-                        saja dan rasakan kemudahan dalam
-                        mendapatkan pemesanan penyewaan mobil untuk ke tempat liburan impian Anda. Dengan antarmuka yang
-                        user-friendly, harga yang kompetitif, dan opsi pembayaran yang fleksibel, kami
-                        menawarkan solusi terbaik untuk sewa mobil Anda. Jadi, kunjungi website
-                        kami sekarang dan buatlah momen berharga tanpa harus khawatir lagi!</p>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <footer>
-        <div class="layar-dalam">
-            <div class="mr-auto mb-2">
-                <a class="is-inline-block" href="/">
-                    <img class="image" src="../static/images/rentcar.png" alt="" width="90px"></a>
-            </div>
-          <div>
-            <!-- Facebook -->
-            <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
-            data-mdb-ripple-color="white"><i class="fab fa-facebook-f"></i></a>
-  
-           <!-- Whatsapp -->
-           <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
-             data-mdb-ripple-color="white"><i class="fab fa-whatsapp"></i></a>
-  
-           <!-- Instagram -->
-           <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
-             data-mdb-ripple-color="white"><i class="fab fa-instagram"></i></a>
-          </div>
-        </div>
-        <div class="layar-dalam">
-          <div class="copyright">&copy; 2021 RentCar</div>
-        </div>
-      </footer>
-
+     <section class="promosi">
+         <div class="columns is-flex is-justify-content-center">
+             <div class="column is-8 content content-box">
+                 <h2 class="title" style="font-weight: bold; text-align: center;">Cara Pemesanan Rental Mobil RentCar</h2>
+                 <p style="text-align: justify;">
+                     Melalui aplikasi RentCar, Anda dapat sewa mobil dengan mudah kapan saja, dan dimana saja.
+                     Dapatkan harga terbaik dan pelayanan yang memuaskan! Kami menawarkan berbagai jenis mobil berkualitas
+                     dengan harga terjangkau. Kunjungi website kami sekarang dan temukan mobil yang sesuai dengan kebutuhan Anda!
+                     dan nikmati perjalanan Anda dengan nyaman dan aman. Kami menjamin kepuasan pelanggan dengan harga yang terjangkau.
+                 </p>
+                 
+                 <!-- Teks tambahan -->
+                 <p style="text-align: justify;">
+                     Sebelum anda memutuskan untuk menyewa mobil, pastikan anda mempelajari dahulu tentang aturan main atau
+                     syarat & ketentuan yang berlaku di setiap perusahaan rental mobil.
+                     Roda Kencana menerapkan sistem pemesanan yang efektif dan cepat dengan berbagai macam ketentuan
+                     yang tidak memberatkan pelanggan. Karena pada prinsipnya tujuan kami adalah memudahkan dan memberikan
+                     kenyamanan kepada pelanggan maupun calon pelanggan.
+                     Berikut beberapa langkah yang perlu anda lakukan apabila ingin melakukan pemesanan rental mobil di RentCar :
+ 
+                     <!-- Mengubah pilihan angka menjadi daftar (list) -->
+                     <ol>
+                         <li>Silahkan daftar dan masuk ke akun Anda.</li>
+                         <li>Temukan dan pilih jenis mobil yang ingin disewa pada bagian menu utama.</li>
+                         <li>Klik bagian sewa, lalu pada detail sewa tertera detail mobil yang akan disewa.</li>
+                         <li>Masukkan tanggal awal sewa beserta tanggal pengembalian, lalu submit.</li>
+                         <li>Masuk ke menu pesanan, dan unggah bukti pembayaran.</li>
+                         <li>Bukti pembayaran berupa file screenshot bukti transfer ke nomor rekening 06711431323/BRI.</li>
+                     </ol>
+                     Apabila anda memiliki pertanyaan atau keberatan tentang layanan kami, anda bisa menghubungi kami melalui
+                     kontak yang tertera dalam website ini. Kami pastikan anda akan mendapatkan solusi yang baik dari kami.
+                 </p>
+             </div>
+         </div>
+     </section>
+ </div>
+</div>
+   
 </body>
-
 </html>

@@ -3,26 +3,30 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="{{ url_for('static', filename='index.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="icon" href="{{ url_for('static', filename='images/1.png') }}" type="image/x-icon" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
     integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
     crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
-    <title>RentCar | Home</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/de152fe019.js" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>RentCar | Contact</title>
 </head>
 
 
 <style>
     .bg-nav {
-        background-image: url('../static/images/gambar4.jpg');
+        background-image: url('../static/images/gambar2.jpg');
         border-radius: 0px 0px 30px 30px;
         background-position: left top;
         background-size: cover;
@@ -51,6 +55,16 @@
         border-radius: 20px;
     }
 
+    .navbar a {
+        text-decoration: none;
+    }
+
+    .navbar-item ul {
+        margin-left: 1rem;
+        color: white;
+        border-radius: 20px;
+    }
+
     .is-lihat {
         background-color: #EDF1D6;
         color: #40513B;
@@ -66,7 +80,7 @@
     }
 
     .is-daftar {
-        background-color: #609966;
+        background-color: #343640;
         color: white;
         border-radius: 20px;
         border: none;
@@ -142,10 +156,26 @@
         line-height: 1.2em;
     }
 
-    footer {
-        bottom: 0;
-        background-color: #81867f;
+    .contact {
+        width: 95%;
+        max-width: 800px;
+        margin: 130px auto 130px auto;
+        padding: 20px;
+        box-shadow: 0px 0px 3px 0px black;
     }
+
+    .btns {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .btns>button {
+        margin-right: 10px;
+    }
+
 
     .is-footer-link {
         background-color: transparent;
@@ -161,6 +191,32 @@
         background-color: transparent;
         border: none;
         color: white;
+    }
+    /* Footer */
+    footer {
+    padding: 50px 0px 50px 0px;
+    background-color: #343640;
+    color: #fff;
+    }
+    footer .layar-dalam {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    }
+    footer .layar-dalam div {
+    width: 20%;
+    }
+    footer .layar-dalam h5 {
+    margin-top: 0px;
+    font-size: 20px;
+    font-weight: bold;
+    }
+    footer .layar-dalam .copyright {
+    width: 100%;
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #666;
+    text-align: center;
     }
 
     .is-user-info:hover {
@@ -227,6 +283,43 @@
     }
 </style>
 
+<script>
+    
+    function kontak() {
+    let nama = $("#nama").val();
+    let email = $("#email").val();
+    let pesan = $("#pesan").val();
+
+    if (nama == '' || email == '' || pesan == '') {
+        Swal.fire(
+            'Oops',
+            'Data tidak lengkap!',
+            'error'
+        )
+    } else {
+        $.ajax({
+            type: "POST",
+            url: "/contact/save",
+            data: {
+                nama: nama,
+                email: email,
+                pesan: pesan
+            },
+            success: function (response) {
+                Swal.fire(
+                    'Done',
+                    'You are signed up, nice!',
+                    'success'
+                )
+                window.location.replace("/contact");
+            },
+        });
+    }
+
+
+}
+</script>
+
 <body>
 
     <div class="bg-nav">
@@ -248,11 +341,18 @@
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start navbar-center">
                     <a class="navbar-item home" href="/">Home</a>
-                    <a class="navbar-item" href="#cara-pemesanan">Cara pemesanan</a>
-                    <a class="navbar-item" href="syarat&ketentuan.html">Syarat&Ketentuan</a>
+                    <li class="navbar-item dropdown"> 
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+                        Informasi Layanan
+                        </a>
+                        <ul class="dropdown-menu">
+                            <a class="dropdown-item" href="/carapemesanan">Cara Pemesanan</a>
+                            <a class="dropdown-item" href="/syaratketentuan">Syarat & Ketentuan</a>
+                        </ul>
+                    </li>
                     <a class="navbar-item" href="#">About</a>
-                    <a class="navbar-item" href="#">Contact</a>
-                    <a class="navbar-item" href="#">Cek Pesanan</a>
+                    <a class="navbar-item" href="/contact">Contact</a>
+
                     {% if logged_in %}
                     {% if is_admin %}
                     <a class="navbar-item" href="/wisata/bookings">Cek Pesanan</a>
@@ -290,7 +390,7 @@
                 <div class="columns is-centered">
                     <div class="column is-half">
                         <div class="jumbotron">
-                            <h2 class="title is-3 has-text-centered is-light"><span class="has-text-weight-light"></span> Cara Pemesanan</h2>
+                            <h2 class="title is-3 has-text-centered is-light"><span class="has-text-weight-light"></span>Contact</h2>
                         </div>
                     </div>
                 </div>
@@ -298,42 +398,52 @@
         </section>
     </div>
     <div class="content-main">
-     <section class="promosi">
-         <div class="columns is-flex is-justify-content-center">
-             <div class="column is-8 content content-box">
-                 <h2 class="title" style="font-weight: bold; text-align: center;">Cara Pemesanan Rental Mobil RentCar</h2>
-                 <p style="text-align: justify;">
-                     Melalui aplikasi RentCar, Anda dapat sewa mobil dengan mudah kapan saja, dan dimana saja.
-                     Dapatkan harga terbaik dan pelayanan yang memuaskan! Kami menawarkan berbagai jenis mobil berkualitas
-                     dengan harga terjangkau. Kunjungi website kami sekarang dan temukan mobil yang sesuai dengan kebutuhan Anda!
-                     dan nikmati perjalanan Anda dengan nyaman dan aman. Kami menjamin kepuasan pelanggan dengan harga yang terjangkau.
-                 </p>
-                 
-                 <!-- Teks tambahan -->
-                 <p style="text-align: justify;">
-                     Sebelum anda memutuskan untuk menyewa mobil, pastikan anda mempelajari dahulu tentang aturan main atau
-                     syarat & ketentuan yang berlaku di setiap perusahaan rental mobil.
-                     Roda Kencana menerapkan sistem pemesanan yang efektif dan cepat dengan berbagai macam ketentuan
-                     yang tidak memberatkan pelanggan. Karena pada prinsipnya tujuan kami adalah memudahkan dan memberikan
-                     kenyamanan kepada pelanggan maupun calon pelanggan.
-                     Berikut beberapa langkah yang perlu anda lakukan apabila ingin melakukan pemesanan rental mobil di RentCar :
- 
-                     <!-- Mengubah pilihan angka menjadi daftar (list) -->
-                     <ol>
-                         <li>Silahkan daftar dan masuk ke akun Anda.</li>
-                         <li>Temukan dan pilih jenis mobil yang ingin disewa pada bagian menu utama.</li>
-                         <li>Klik bagian sewa, lalu pada detail sewa tertera detail mobil yang akan disewa.</li>
-                         <li>Masukkan tanggal awal sewa beserta tanggal pengembalian, lalu submit.</li>
-                         <li>Masuk ke menu pesanan, dan unggah bukti pembayaran.</li>
-                         <li>Bukti pembayaran berupa file screenshot bukti transfer ke nomor rekening 06711431323/BRI.</li>
-                     </ol>
-                     Apabila anda memiliki pertanyaan atau keberatan tentang layanan kami, anda bisa menghubungi kami melalui
-                     kontak yang tertera dalam website ini. Kami pastikan anda akan mendapatkan solusi yang baik dari kami.
-                 </p>
-             </div>
-         </div>
-     </section>
- </div>
+        <section id="contact">
+            <div class="contact" data-aos="zoom-in" data-aos-offset="350">
+              <h1 class="text-center mb-5"><i class="bi bi-envelope-fill"></i></h1>
+              <form name="contact-form">
+                <div class="row g-3">
+                  <div class="col">
+                    <input id="nama" type="text" class="form-control" placeholder="Masukan Nama" aria-label="Masukan Nama">
+                  </div>
+                  <div class="col">
+                    <input id="email" type="text" class="form-control" placeholder="Masukan Email" aria-label="Masukan Email">
+                  </div>
+                  <div class="form-floating">
+                    <textarea name="pesan" class="form-control" placeholder="Leave a comment here" id="pesan"
+                      style="height: 100px"></textarea>
+                    <label for="floatingTextarea2" style="color:grey;"> Tuliskan pesan</label>
+                  </div>
+                  <div class="btns">
+                    <button class="btn btn-outline-dark btn-kirim" onclick="kontak()">Kirim</button>
+              </form>
+        </section>
+
+        <footer>
+            <div class="layar-dalam">
+                <div class="mr-auto mb-2">
+                    <a class="is-inline-block" href="/">
+                        <img class="image" src="../static/images/rentcar.png" alt="" width="90px"></a>
+                </div>
+              <div>
+                <!-- Facebook -->
+                <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
+                data-mdb-ripple-color="white"><i class="fab fa-facebook-f"></i></a>
+      
+               <!-- Whatsapp -->
+               <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
+                 data-mdb-ripple-color="white"><i class="fab fa-whatsapp"></i></a>
+      
+               <!-- Instagram -->
+               <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
+                 data-mdb-ripple-color="white"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+            <div class="layar-dalam">
+              <div class="copyright">&copy; 2021 RentCar</div>
+            </div>
+          </footer>
+    </div>
 </div>
    
 </body>

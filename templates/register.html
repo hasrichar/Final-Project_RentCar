@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="icon" href="{{ url_for('static', filename='1.png') }}" type="image/x-icon" />
+    <link rel="icon" href="{{ url_for('static', filename='images/1.png') }}" type="image/x-icon" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/de152fe019.js" crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='index.js') }}"></script>
@@ -42,10 +42,17 @@
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start navbar-center">
                     <a class="navbar-item home" href="/">Home</a>
-                    <a class="navbar-item" href="#">Cara pemesanan</a>
-                    <a class="navbar-item" href="syarat&ketentuan.html">Syarat&Ketentuan</a>
+                    <li class="navbar-item dropdown"> 
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+                        Informasi Layanan
+                        </a>
+                        <ul class="dropdown-menu">
+                            <a class="dropdown-item" href="/carapemesanan">Cara Pemesanan</a>
+                            <a class="dropdown-item" href="/syaratketentuan">Syarat & Ketentuan</a>
+                        </ul>
+                    </li>
                     <a class="navbar-item" href="#">About</a>
-                    <a class="navbar-item" href="#">Contact</a>
+                    <a class="navbar-item" href="/contact">Contact</a>
 
                     {% if logged_in %}
                     <a class="navbar-item" href="/cekpesanan/{{user_info.name}}">Cek Pesanan</a>
@@ -67,7 +74,7 @@
                 <div class="column is-8 is-offset-2 register">
                     <div class="columns">
                         <div class="column left">
-                            <img src="../static/rentcar-hitam.png" alt="" class="title is-4">
+                            <img src="../static/images/rentcar-hitam.png" alt="" class="title is-4">
                             <h2 class="subtitle colored is-4">Penyewaan mobil mudah & nyaman</h2>
                             <p>Daftar mudah cukup menggunakan e-mail</p>
                         </div>
@@ -99,6 +106,7 @@
                                 onclick="signup()">Register</button>
                             <br />
                             <small><em>Sudah punya akun?</em><em><a href="/signin"> Login</a></em></small>
+                            <br />
 
                         </div>
                     </div>
