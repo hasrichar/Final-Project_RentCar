@@ -227,7 +227,7 @@
         }
 
         .is-daftar:hover {
-            background-color: #40513B;
+            background-color: #343640;
             color: white;
         }
 
@@ -237,7 +237,7 @@
 
         .is-masuk {
             border-radius: 20px;
-            background-color: #40513B;
+            background-color: #343640;
             color: #EDF1D6;
         }
 
@@ -264,6 +264,14 @@
         }
     }
 </style>
+
+<script>
+    function toggleNavbar() {
+        let target = $('#navbarBasicExample');
+        $('.navbar-burger').toggleClass('is-active');
+        target.toggleClass('is-active');
+    }
+</script>
 
 <body>
 
@@ -362,7 +370,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Xpander</h5>
                             <p class="card-text">Start From Rp. 700.0000/Hari</p>
-                            <a href="../templates/detail.html" class="btn btn-primary">Sewa</a>
+                            <a href="../templates/detail.html" class="btn btn-primary" onclick="sewa()">Sewa</a>
                         </div>
                     </div>
                 </div>

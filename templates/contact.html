@@ -245,7 +245,7 @@
         }
 
         .is-daftar:hover {
-            background-color: #40513B;
+            background-color: #343640;
             color: white;
         }
 
@@ -255,7 +255,7 @@
 
         .is-masuk {
             border-radius: 20px;
-            background-color: #40513B;
+            background-color: #343640;
             color: #EDF1D6;
         }
 
@@ -318,6 +318,14 @@
 
 
 }
+</script>
+
+<script>
+    function toggleNavbar() {
+        let target = $('#navbarBasicExample');
+        $('.navbar-burger').toggleClass('is-active');
+        target.toggleClass('is-active');
+    }
 </script>
 
 <body>
@@ -418,33 +426,32 @@
                     <button class="btn btn-outline-dark btn-kirim" onclick="kontak()">Kirim</button>
               </form>
         </section>
+    </div>
 
-        <footer>
-            <div class="layar-dalam">
-                <div class="mr-auto mb-2">
-                    <a class="is-inline-block" href="/">
-                        <img class="image" src="../static/images/rentcar.png" alt="" width="90px"></a>
-                </div>
-              <div>
+    <footer>
+        <div class="layar-dalam">
+            <div class="mr-auto mb-2">
+                <a class="is-inline-block" href="/">
+                    <img class="image" src="../static/images/rentcar.png" alt="" width="90px"></a>
+            </div>
+        <div>
                 <!-- Facebook -->
-                <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
+            <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
                 data-mdb-ripple-color="white"><i class="fab fa-facebook-f"></i></a>
       
                <!-- Whatsapp -->
-               <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
-                 data-mdb-ripple-color="white"><i class="fab fa-whatsapp"></i></a>
+            <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
+                data-mdb-ripple-color="white"><i class="fab fa-whatsapp"></i></a>
       
                <!-- Instagram -->
-               <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
-                 data-mdb-ripple-color="white"><i class="fab fa-instagram"></i></a>
-              </div>
+            <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
+                data-mdb-ripple-color="white"><i class="fab fa-instagram"></i></a>
             </div>
-            <div class="layar-dalam">
-              <div class="copyright">&copy; 2021 RentCar</div>
-            </div>
-          </footer>
-    </div>
-</div>
-   
+        </div>
+        <div class="layar-dalam">
+            <div class="copyright">&copy; 2021 RentCar</div>
+        </div>
+    </footer>
+    
 </body>
 </html>
