@@ -172,6 +172,7 @@
 
     /* Footer */
     footer {
+<<<<<<< HEAD
         padding: 50px 0px 15px 0px;
         background-color:  #d6d2bf;
         color: black;
@@ -197,6 +198,31 @@
         padding-top: 30px;
         border-top: 1px solid #666;
         text-align: center;
+=======
+    padding: 50px 0px 50px 0px;
+    background-color: #343640;
+    color: #fff;
+    }
+    footer .layar-dalam {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    }
+    footer .layar-dalam div {
+    width: 20%;
+    }
+    footer .layar-dalam h5 {
+    margin-top: 0px;
+    font-size: 20px;
+    font-weight: bold;
+    }
+    footer .layar-dalam .copyright {
+    width: 100%;
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #666;
+    text-align: center;
+>>>>>>> fdaf1f21dd7eeadc3a29e8753ab04428d2d42490
     }
 
     .is-user-info:hover {
@@ -225,7 +251,7 @@
         }
 
         .is-daftar:hover {
-            background-color: #40513B;
+            background-color: #343640;
             color: white;
         }
 
@@ -235,7 +261,7 @@
 
         .is-masuk {
             border-radius: 20px;
-            background-color: #40513B;
+            background-color: #343640;
             color: #EDF1D6;
         }
 
@@ -262,6 +288,14 @@
         }
     }
 </style>
+
+<script>
+    function toggleNavbar() {
+        let target = $('#navbarBasicExample');
+        $('.navbar-burger').toggleClass('is-active');
+        target.toggleClass('is-active');
+    }
+</script>
 
 <body>
 
@@ -394,10 +428,15 @@
      </section>
  </div>
 </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> fdaf1f21dd7eeadc3a29e8753ab04428d2d42490
 <footer>
     <div class="layar-dalam">
         <div class="mr-auto mb-2">
             <a class="is-inline-block" href="/">
+<<<<<<< HEAD
                 <img class="image" src="../static/images/rentcar-hitam.png" alt="" width="90px"></a>
         </div>
       <div>
@@ -418,5 +457,28 @@
       <div class="copyright">&copy; 2021 RentCar</div>
     </div>
   </footer>
+=======
+                <img class="image" src="../static/images/rentcar.png" alt="" width="90px"></a>
+        </div>
+    <div>
+            <!-- Facebook -->
+        <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
+            data-mdb-ripple-color="white"><i class="fab fa-facebook-f"></i></a>
+  
+           <!-- Whatsapp -->
+        <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
+            data-mdb-ripple-color="white"><i class="fab fa-whatsapp"></i></a>
+  
+           <!-- Instagram -->
+        <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
+            data-mdb-ripple-color="white"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+    <div class="layar-dalam">
+        <div class="copyright">&copy; 2021 RentCar</div>
+    </div>
+</footer>
+   
+>>>>>>> fdaf1f21dd7eeadc3a29e8753ab04428d2d42490
 </body>
 </html>
