@@ -196,7 +196,6 @@ def contact_save():
         "email": email, 
         "pesan": pesan
     }
-
     db.contact.insert_one(doc)
     return jsonify({'result': 'success'})
 

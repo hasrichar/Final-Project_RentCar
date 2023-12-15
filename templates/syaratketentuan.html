@@ -77,11 +77,12 @@
     }
 
     .is-daftar {
-        background-color: #343640;
-        color: white;
+        background-color: #d6d2bf;
+        color: #40513B;
         border-radius: 20px;
         border: none;
     }
+
 
     .is-daftar:hover {
         background-color: white;
@@ -153,11 +154,6 @@
         line-height: 1.2em;
     }
 
-    footer {
-        bottom: 0;
-        background-color: #81867f;
-    }
-
     .is-footer-link {
         background-color: transparent;
         color: white;
@@ -174,13 +170,42 @@
         color: white;
     }
 
+    /* Footer */
+    footer {
+        padding: 50px 0px 15px 0px;
+        background-color:  #d6d2bf;
+        color: black;
+    }
+        footer .layar-dalam {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-left: 30px;
+        align-items: flex-start;
+    }
+        footer .layar-dalam div {
+        width: 20%;
+    }
+        footer .layar-dalam h5 {
+        margin-top: 0px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+        footer .layar-dalam .copyright {
+        width: 100%;
+        margin-top: 30px;
+        padding-top: 30px;
+        border-top: 1px solid #666;
+        text-align: center;
+    }
+
     .is-user-info:hover {
-        background-color: white;
+        background-color: #40513B;
         border: none;
         color: #40513B;
         border-radius: 20px;
     }
-
+  
     @media screen and (max-width: 768px) {
         .navbar-start {
             flex-direction: column;
@@ -308,7 +333,8 @@
                 <div class="columns is-centered">
                     <div class="column is-half">
                         <div class="jumbotron">
-                            <h2 class="title is-3 has-text-centered is-light"><span class="has-text-weight-light"></span>Syarat & Ketentuan</h2>
+                            <h2 class="title is-3 has-text-centered is-light"><span class="has-text-weight-light">
+                                     </span>Syarat dan Ketentuan</h2>
                         </div>
                     </div>
                 </div>
@@ -368,6 +394,29 @@
      </section>
  </div>
 </div>
-   
+<footer>
+    <div class="layar-dalam">
+        <div class="mr-auto mb-2">
+            <a class="is-inline-block" href="/">
+                <img class="image" src="../static/images/rentcar-hitam.png" alt="" width="90px"></a>
+        </div>
+      <div>
+        <!-- Facebook -->
+        <a class="btn btn-link btn-floating btn-lg text-black m-1" href="#!" role="button"
+        data-mdb-ripple-color="black"><i class="fab fa-facebook-f"></i></a>
+
+       <!-- Whatsapp -->
+       <a class="btn btn-link btn-floating btn-lg text-black m-1" href="#!" role="button"
+         data-mdb-ripple-color="black"><i class="fab fa-whatsapp"></i></a>
+
+       <!-- Instagram -->
+       <a class="btn btn-link btn-floating btn-lg text-black m-1" href="#!" role="button"
+         data-mdb-ripple-color="black"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="layar-dalam">
+      <div class="copyright">&copy; 2021 RentCar</div>
+    </div>
+  </footer>
 </body>
 </html>
