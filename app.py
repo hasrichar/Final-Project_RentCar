@@ -82,10 +82,11 @@ def home_admin():
             algorithms=['HS256']
         )
         user_info = db.admin.find_one({"email": payload["id"]})
-        cards = list(db.cards.find())
+        # cars = db.cars.find()
+        cars = list(db.cars.find())
         is_admin = user_info.get("category") == "admin"
         logged_in = True
-        return render_template('templates_admin/home.html', user_info=user_info, cards=cards, logged_in = logged_in, is_admin = is_admin)
+        return render_template('templates_admin/home.html', user_info=user_info, cars=cars, logged_in = logged_in, is_admin = is_admin)
     except jwt.ExpiredSignatureError:
         msg = 'Your token has expired'
     except jwt.exceptions.DecodeError:
@@ -268,7 +269,6 @@ def add_car():
         # Retrieve form data
         judul = request.form.get('judul')
         harga_rental = request.form.get('harga_rental')
-        # Add more fields as needed
 
         # Handle image upload
         image = request.files['image']
@@ -278,15 +278,18 @@ def add_car():
         db.cars.insert_one({
             'judul': judul,
             'harga_rental': harga_rental,
-            # Add more fields as needed
             'image_path': 'path/to/uploaded/image.jpg'  # Update with the actual path
         })
 
         # Redirect to the admin home page after adding the car
         return redirect(url_for('home_admin'))
 
-    # Render the form for car input
-    return render_template('templates_admin/add_car.html')
+    # Retrieve all cars from the database
+    cars = db.cars.find()
+
+    # Render the form for car input along with the list of cars
+    return render_template('templates_admin/add_car.html', cars=cars)
+
 
 
 @app.route('/edit_car/<car_id>', methods=['GET', 'POST'])
@@ -305,6 +308,13 @@ def edit_car(car_id):
     # Render a form to edit the car details
     return render_template('templates_admin/edit_car.html', car=car_details)
 
+@app.route('/delete_car/<car_id>', methods=['GET'])
+def delete_car(car_id):
+    # Your delete logic here
+    # ...
+
+    # Redirect to the admin home page after deleting the car
+    return redirect(url_for('home_admin'))
 
 @app.route('/detail')
 def detail():

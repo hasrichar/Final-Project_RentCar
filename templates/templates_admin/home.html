@@ -121,36 +121,46 @@
 <div class="main-content">
     <!-- ... existing code ... -->
 
-    <div class="card shadow mb-4">
-        <div class="card-body">
-            <div class="table-responsive">
-                <!-- Add Car link -->
-                <a href="{{ url_for('add_car') }}" class="btn btn-success">Add Car</a>
+    <!-- show_cars.html -->
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <!-- Add Car link -->
+            <a href="{{ url_for('add_car') }}" class="btn btn-success">Add Car</a>
 
-                <table class="table table-bordered table-hovered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <!-- ... existing code ... -->
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Loop through data from the database -->
-                        {% for car in cars %}
-                            <tr>
-                                <!-- ... existing code ... -->
-                                <td>
-                                    <a href="{{ url_for('edit_car', car_id=car.id) }}" class="btn btn-warning">Edit</a>
-                                    <a href="{{ url_for('delete_car', car_id=car.id) }}" class="btn btn-danger">Delete</a>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                        <!-- End loop -->
-                    </tbody>
-                </table>
-            </div>
+            <table class="table table-bordered table-hovered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <!-- ... existing code ... -->
+                        <th>Judul</th>
+                        <th>Harga</th>
+                        <th>Image</th>
+                        <th>Action</th> <!-- Add a new column for actions -->
+                    </tr>
+                </thead>
+                <!-- ... existing code ... -->
+                <tbody>
+                    <!-- Loop through data from the database -->
+                    {% for car in cars %}
+                    <tr>
+                        <!-- ... existing code ... -->
+                        <td>
+                            <!-- Move the buttons to the right corner -->
+                            <div class="d-flex justify-content-end">
+                                <a href="{{ url_for('edit_car', car_id=car.id) }}" class="btn btn-warning">Edit</a>
+                                <a href="{{ url_for('delete_car', car_id=car.id) }}" class="btn btn-danger">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    <!-- End loop -->
+                </tbody>
+                <!-- ... existing code ... -->
+            </table>
         </div>
     </div>
+</div>
+
 </div>
 
 <!-- ... existing code ... -->
