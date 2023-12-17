@@ -107,7 +107,7 @@ function admin_sign_in() {
         success: function (response) {
             if (response["result"] === "success") {
                 $.cookie("mytoken", response["token"], { path: "/" });
-                window.location.replace("/");
+                window.location.replace("/home_admin");
             } else {
                 // alert(response["msg"]);
                 Swal.fire(
@@ -136,6 +136,21 @@ function sign_out() {
     // });
 }
 
+function sign_out() {
+    $.removeCookie("mytoken", { path: "/" });
+    alert("Logged out!");
+    window.location.href = "/";
+    // Swal.fire({
+    //     icon: 'success',
+    //     title: 'Logged Out!',
+    //     text: 'You have been successfully logged out.',
+    //     showConfirmButton: false,
+    //     timer: 2000, // Adjust the timer value (in milliseconds) as needed
+    //     onClose: function() {
+    //         window.location.reload();
+    //     }
+    // });
+}
 
 function openModal() {
     const modal = document.getElementById('modal');

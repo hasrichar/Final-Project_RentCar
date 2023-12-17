@@ -72,19 +72,29 @@ def main():
     return render_template('templates_user/home.html', msg=msg)
 
 
-
-@app.route('/home_admin', methods=['GET'])
+@app.route('/home_admin', methods = ['GET'])
 def home_admin():
-    # Fetch card data from the database
-    cards = list(db.cards.find())
-    return render_template('/templates_admin/home.html', cards=cards)
+    token_receive = request.cookies.get(TOKEN_KEY)
+    try:
+        payload =jwt.decode(
+            token_receive,
+            SECRET_KEY,
+            algorithms=['HS256']
+        )
+        user_info = db.admin.find_one({"email": payload["id"]})
+        cards = list(db.cards.find())
+        is_admin = user_info.get("category") == "admin"
+        logged_in = True
+        return render_template('templates_admin/home.html', user_info=user_info, cards=cards, logged_in = logged_in, is_admin = is_admin)
+    except jwt.ExpiredSignatureError:
+        msg = 'Your token has expired'
+    except jwt.exceptions.DecodeError:
+        msg = 'There was a problem logging you in'
+    return render_template('templates_admin/home.html', msg=msg)
 
-
-# ... (existing code)
 
 @app.route('/tambah', methods=['POST'])
 def add_card():
-    # Get card details from the form
     name = request.form.get('name')
     price = request.form.get('price')
     image = request.form.get('image')
@@ -92,7 +102,6 @@ def add_card():
     if not name or not price or not image:
         return jsonify({'result': 'fail', 'msg': 'Please fill in all fields'})
 
-    # Insert card details into the database
     db.cards.insert_one({"name": name, "price": price, "image": image})
 
     return redirect(url_for('home_admin'))
@@ -295,6 +304,11 @@ def edit_car(car_id):
 
     # Render a form to edit the car details
     return render_template('templates_admin/edit_car.html', car=car_details)
+
+
+@app.route('/detail')
+def detail():
+    return render_template('/templates_user/detail.html')
 
 
 if __name__ == '__main__':
