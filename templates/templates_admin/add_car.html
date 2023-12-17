@@ -1,17 +1,202 @@
-<!-- templates_admin/add_car.html -->
-<form method="POST" action="{{ url_for('add_car') }}" enctype="multipart/form-data">
-     <!-- Include form fields for car details -->
-     <label for="judul">Judul:</label>
-     <input type="text" name="judul" required><br>
- 
-     <label for="harga_rental">Harga Rental:</label>
-     <input type="text" name="harga_rental" required><br>
- 
-     <!-- Add more fields as needed -->
- 
-     <label for="image">Upload Gambar:</label>
-     <input type="file" name="image" accept="image/*" required><br>
- 
-     <input type="submit" value="Add Car">
- </form>
- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Ubuntu', sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            background-color: #111825;
+            width: 260px;
+            padding: 24px;
+            display: flex;
+            box-sizing: border-box;
+            flex-direction: column;
+        }
+        .main-content {
+            background-color: #E5E5E5;
+            flex-grow: 1;
+            padding: 24px;
+        }
+
+        .sidebar .main .list-item .description {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 16px;
+            text-align: center;
+            color: #FFFFFF;
+        }
+        .sidebar a {
+            text-decoration: none;
+        }
+        .sidebar .main .list-item .icon {
+            margin-right: 12px;
+        }
+        .sidebar .main .list-item {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 12px 10px;
+            border-radius: 8px;
+            width: 212px;
+            box-sizing: border-box;
+        }
+        .sidebar .main .list-item:hover {
+            background: #FF9900;
+            transition: all ease-in .2s;
+        }
+        .logout-btn {
+            margin-top: 16px;
+            padding: 12px 10px;
+            border-radius: 8px;
+            background-color: #111825;
+            display: flex;
+            align-items: center;
+            width: 212px;
+            box-sizing: border-box;
+            text-decoration: none;
+            color: #FFFFFF;
+            transition: background-color ease-in .2s;
+        }
+        .logout-btn:hover {
+            background-color: red;
+        }
+        .logout-btn .icon {
+            margin-right: 12px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        form input[type="text"],
+        form input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        form input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="sidebar">
+        <div class="ilustration">
+            <img src="/static/asset/logo1.png" alt="">
+        </div>
+        <div class="main">
+            <div class="list-item">
+                <a href="/home_admin">
+                    <img src="/static/asset/1.png" alt="" class="icon">
+                    <span class="description">Dashboard</span>
+                </a>
+            </div>
+            <div class="list-item">
+                <a href="add_car">
+                    <img src="/static/asset/2.png" alt="" class="icon">
+                    <span class="description">Tambah Mobil</span>
+                </a>
+            </div>
+            <div class="list-item">
+                <a href="#">
+                    <img src="/static/asset/5.png" alt="" class="icon">
+                    <span class="description">Cek Booking</span>
+                </a>
+            </div>
+            <a class="logout-btn" onclick="sign_out()">
+                <img src="/static/asset/logoutt.png" alt="" class="icon">
+                <span class="description">Logout</span>
+            </a>
+        </div>
+    </div>
+
+<div class="main-content">
+
+    <h1>Tambah Mobil</h1>
+
+    <!-- form -->
+        <form method="POST" action="{{ url_for('add_car') }}" enctype="multipart/form-data">
+            <!-- Include form fields for car details -->
+            <label for="judul">Judul:</label>
+            <input type="text" name="judul" required><br>
+
+            <label for="harga_rental">Harga Rental:</label>
+            <input type="text" name="harga_rental" required><br>
+
+            <label for="brand">Brand:</label>
+            <input type="text" name="brand" required><br>
+
+            <label for="tahun">Tahun:</label>
+            <input type="text" name="tahun" required><br>
+
+            <label for="transmisi">Transmisi:</label>
+
+            <select id="transmisi" name="transmisi" required>
+                <option selected disabled>-- Pilih Transmisi --</option>
+                <option value="manual">Manual</option>
+                <option value="automatic">Automatic</option>
+              </select>
+
+            <label for="bahan_bakar">Bahan Bakar:</label>
+            <input type="text" name="bahan_bakar" required><br>
+
+            <!-- Add more fields as needed -->
+
+            <label for="image">Upload Gambar:</label>
+            <input type="file" name="image" accept="image/*" required><br>
+
+            <input type="submit" value="Add Car">
+        </form>
+
+</div>
+  
+    </div>
+</div>
+
+</body>
+</html>
