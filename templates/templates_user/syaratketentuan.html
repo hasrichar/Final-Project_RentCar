@@ -3,30 +3,27 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="icon" href="{{ url_for('static', filename='images/1.png') }}" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
     integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
     crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://kit.fontawesome.com/de152fe019.js" crossorigin="anonymous"></script>
-    <script src="{{ url_for('static', filename='index.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>RentCar | Contact</title>
+    <title>RentCar | Syarat & Ketentuan</title>
 </head>
 
 
 <style>
     .bg-nav {
-        background-image: url('../static/images/gambar2.jpg');
+        background-image: url('../static/images/nav.jpg');
         border-radius: 0px 0px 30px 30px;
         background-position: left top;
         background-size: cover;
@@ -79,7 +76,6 @@
         background-color: #dfeb9a;
     }
 
-    
     .is-daftar {
         background-color: #d6d2bf;
         color: #40513B;
@@ -158,27 +154,6 @@
         line-height: 1.2em;
     }
 
-    .contact {
-        width: 95%;
-        max-width: 800px;
-        margin: 130px auto 130px auto;
-        padding: 20px;
-        box-shadow: 0px 0px 3px 0px black;
-    }
-
-    .btns {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        margin-top: 20px;
-    }
-
-    .btns>button {
-        margin-right: 10px;
-    }
-
-
     .is-footer-link {
         background-color: transparent;
         color: white;
@@ -194,8 +169,9 @@
         border: none;
         color: white;
     }
-    /* Footer */
-    footer {
+
+   /* Footer */
+   footer {
         padding: 50px 0px 15px 0px;
         background-color:  #d6d2bf;
         color: black;
@@ -229,7 +205,6 @@
         color: #40513B;
         border-radius: 20px;
     }
-  
     @media screen and (max-width: 768px) {
         .navbar-start {
             flex-direction: column;
@@ -286,43 +261,6 @@
         }
     }
 </style>
-
-<script>
-    
-    function kontak() {
-    let nama = $("#nama").val();
-    let email = $("#email").val();
-    let pesan = $("#pesan").val();
-
-    if (nama == '' || email == '' || pesan == '') {
-        Swal.fire(
-            'Oops',
-            'Data tidak lengkap!',
-            'error'
-        )
-    } else {
-        $.ajax({
-            type: "POST",
-            url: "/contact/save",
-            data: {
-                nama: nama,
-                email: email,
-                pesan: pesan
-            },
-            success: function (response) {
-                Swal.fire(
-                    'Done',
-                    'You are signed up, nice!',
-                    'success'
-                )
-                window.location.replace("/contact");
-            },
-        });
-    }
-
-
-}
-</script>
 
 <script>
     function toggleNavbar() {
@@ -402,7 +340,8 @@
                 <div class="columns is-centered">
                     <div class="column is-half">
                         <div class="jumbotron">
-                            <h2 class="title is-3 has-text-centered is-light"><span class="has-text-weight-light"></span>Contact</h2>
+                            <h2 class="title is-3 has-text-centered is-light"><span class="has-text-weight-light">
+                                     </span>Syarat dan Ketentuan</h2>
                         </div>
                     </div>
                 </div>
@@ -410,80 +349,82 @@
         </section>
     </div>
     <div class="content-main">
-        <section id="contact">
-            <div class="contact" data-aos="zoom-in" data-aos-offset="350">
-              <h1 class="text-center mb-5"><i class="bi bi-envelope-fill"></i></h1>
-              <form name="contact-form">
-                <div class="row g-3">
-                  <div class="col">
-                    <input id="nama" type="text" class="form-control" placeholder="Masukan Nama" aria-label="Masukan Nama">
-                  </div>
-                  <div class="col">
-                    <input id="email" type="text" class="form-control" placeholder="Masukan Email" aria-label="Masukan Email">
-                  </div>
-                  <div class="form-floating">
-                    <textarea name="pesan" class="form-control" placeholder="Leave a comment here" id="pesan"
-                      style="height: 100px"></textarea>
-                    <label for="floatingTextarea2" style="color:grey;"> Tuliskan pesan</label>
-                  </div>
-                  <div class="btns">
-                    <button class="btn btn-outline-dark btn-kirim" onclick="kontak()">Kirim</button>
-              </form>
-        </section>
-    </div>
+     <section class="promosi">
+         <div class="columns is-flex is-justify-content-center">
+             <div class="column is-8 content content-box">
+                 <h2 class="title" style="font-weight: bold; text-align: center;">Syarat dan Ketentuan</h2>
+                 <!-- Teks tambahan -->
+                 <p style="text-align: justify;">
+                    <h2>Penyewa dilarang melakukan :</h2>
+                    <ol>
+                     <li>Menggadaikan kendaraan</li>
+                     <li>Menyewakan kembali kepada orang lain</li>
+                     <li>Menjual kendaraan</li>
+                     <li>Memindah tangankan sewa</li>
+                     <li>Menggunakan mobil untuk tindak kejahatan</li>
+                     <li>Menaikan harga sewa dari penawaran kami (Mark Up)</li>
+                     <li>Kendaraan hanya dapat dikemudikan oleh orang yang memiliki SIM</li>
+                     <li>Dilarang meninggalkan STNK, kunci kontak, dan karcis parkir di dalam kendaraan yang sedang diparkir</li>
+                     <li>Masa sewa 1 bulan dihitung 30 hari</li>
+                     <li>Penggantian kendaraan tidak berlaku jika kerusakan/kecelakaan diakibatkan kelalaian penyewa</li>
+                     <li>Penyewaan tanpa supir diwajibkan untuk memonitor perawatan kendaraan</li>
+                    </ol>
+                    <h2>Persyaratan sewa kendaraan untuk perusahaan :</h2>
+                    <ol>
+                    <li>Fotokopi SIUP dan NPWP</li>
+                    <li>Fotokopi akte pendirian perusahaan</li>
+                    <li>Fotokopi Tanda Daftar perusahaan</li>
+                    <li>Surat keterangan domisili perusahaan</li>
+                    <li>Surat pemesanan kendaraan</li>
+                    <li>Fotokopi pemohon</li>
+                    <li>Fotokopi KTP direksi, atau pejabat yang bertanggung jawab</li>
+                    <li>Fotokopi SIM pengemudi</li>
+                    <li>Bersedia untuk kami survey kantor dan tempat tinggal pemohon</li>
+                    <li>Membayar uang deposit sebagai jaminan asuransi (dikembalikan di akhir sewa)</li>
+               </ol>
+               <h2>Persyaratan sewa kendaraan untuk perorangan :</h2>
+               <ol>
+                   <li>Mengisi formulir biodata penyewa</li>
+                   <li>Fotokopi bukti kepemilikan rumah atau tempat tinggal</li>
+                   <li>Fotokopi PBB</li>
+                   <li>Fotokopi NPWP</li>
+                   <li>Fotokopi KTP, KK, Pasport atau KITAS (pemohon dan penjamin)</li>
+                   <li>Bersedia untuk kami survey alamat dan tempat tinggal anda</li>
+                   <li>Memiliki penjamin</li>
+                   <li>Fotokopi SIM pengemudi</li>
+                   <li>Pas foto 4 x 6 atau gambar diri lainnya</li>
+                   <li>Membayar uang deposit sebagai jaminan asuransi (dikembalikan di akhir sewa)</li>
+               </ol>
+                    </p>
+             </div>
+         </div>
+     </section>
+ </div>
+</div>
+<footer>
+    <div class="layar-dalam">
+        <div class="mr-auto mb-2">
+            <a class="is-inline-block" href="/">
+                <img class="image" src="../static/images/rentcar-hitam.png" alt="" width="90px"></a>
+        </div>
+      <div>
+        <!-- Facebook -->
+        <a class="btn btn-link btn-floating btn-lg text-black m-1" href="#!" role="button"
+        data-mdb-ripple-color="black"><i class="fab fa-facebook-f"></i></a>
 
-<<<<<<< HEAD
-       
+       <!-- Whatsapp -->
+       <a class="btn btn-link btn-floating btn-lg text-black m-1" href="#!" role="button"
+         data-mdb-ripple-color="black"><i class="fab fa-whatsapp"></i></a>
+
+       <!-- Instagram -->
+       <a class="btn btn-link btn-floating btn-lg text-black m-1" href="#!" role="button"
+         data-mdb-ripple-color="black"><i class="fab fa-instagram"></i></a>
+      </div>
     </div>
-=======
->>>>>>> fdaf1f21dd7eeadc3a29e8753ab04428d2d42490
-    <footer>
-        <div class="layar-dalam">
-            <div class="mr-auto mb-2">
-                <a class="is-inline-block" href="/">
-<<<<<<< HEAD
-                    <img class="image" src="../static/images/rentcar-hitam.png" alt="" width="90px"></a>
-            </div>
-          <div>
-            <!-- Facebook -->
-            <a class="btn btn-link btn-floating btn-lg text-black m-1" href="#!" role="button"
-            data-mdb-ripple-color="black"><i class="fab fa-facebook-f"></i></a>
-  
-           <!-- Whatsapp -->
-           <a class="btn btn-link btn-floating btn-lg text-black m-1" href="#!" role="button"
-             data-mdb-ripple-color="black"><i class="fab fa-whatsapp"></i></a>
-  
-           <!-- Instagram -->
-           <a class="btn btn-link btn-floating btn-lg text-black m-1" href="#!" role="button"
-             data-mdb-ripple-color="black"><i class="fab fa-instagram"></i></a>
-          </div>
-        </div>
-        <div class="layar-dalam">
-          <div class="copyright">&copy; 2021 RentCar</div>
-        </div>
-      </footer>
-=======
-                    <img class="image" src="../static/images/rentcar.png" alt="" width="90px"></a>
-            </div>
-        <div>
-                <!-- Facebook -->
-            <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
-                data-mdb-ripple-color="white"><i class="fab fa-facebook-f"></i></a>
-      
-               <!-- Whatsapp -->
-            <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
-                data-mdb-ripple-color="white"><i class="fab fa-whatsapp"></i></a>
-      
-               <!-- Instagram -->
-            <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
-                data-mdb-ripple-color="white"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
-        <div class="layar-dalam">
-            <div class="copyright">&copy; 2021 RentCar</div>
-        </div>
-    </footer>
-    
->>>>>>> fdaf1f21dd7eeadc3a29e8753ab04428d2d42490
+    <div class="layar-dalam">
+      <div class="copyright">&copy; 2021 RentCar</div>
+    </div>
+  </footer>
+
 </body>
 </html>

@@ -3,46 +3,39 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="{{ url_for('static', filename='images/1.png') }}" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="{{ url_for('static', filename='index.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="icon" href="{{ url_for('static', filename='images/1.png') }}" type="image/x-icon" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
     integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
     crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-JM66DMBuv+DoN3UWjb30ViFzv5fWk74+I3eB9NFVUhUhkK95IPWiZlnN3cPVmMR7IeTJ3jpsCYpBc0mPx9szAg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <title>RentCar | About</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/de152fe019.js" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>RentCar | Contact</title>
 </head>
+
 
 <style>
     .bg-nav {
-        background-image: url('../static/images/gambar3.jpg');
+        background-image: url('../static/images/gambar2.jpg');
         border-radius: 0px 0px 30px 30px;
-        background-position:bottom;
+        background-position: left top;
         background-size: cover;
         background-repeat: no-repeat;
         background-attachment: scroll;
         background-blend-mode: normal;
         will-change: transform;
         height: 400px;
-}
-
-    .bg-nav video {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-}
+    }
 
     .navbar {
         padding: 1rem;
@@ -86,12 +79,14 @@
         background-color: #dfeb9a;
     }
 
+    
     .is-daftar {
-        background-color: #609966;
-        color: white;
+        background-color: #d6d2bf;
+        color: #40513B;
         border-radius: 20px;
         border: none;
     }
+
 
     .is-daftar:hover {
         background-color: white;
@@ -163,6 +158,26 @@
         line-height: 1.2em;
     }
 
+    .contact {
+        width: 95%;
+        max-width: 800px;
+        margin: 130px auto 130px auto;
+        padding: 20px;
+        box-shadow: 0px 0px 3px 0px black;
+    }
+
+    .btns {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .btns>button {
+        margin-right: 10px;
+    }
+
 
     .is-footer-link {
         background-color: transparent;
@@ -181,38 +196,40 @@
     }
     /* Footer */
     footer {
-    padding: 50px 0px 50px 0px;
-    background-color: #343a40;
-    color: #fff;
+        padding: 50px 0px 15px 0px;
+        background-color:  #d6d2bf;
+        color: black;
     }
-    footer .layar-dalam {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+        footer .layar-dalam {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-left: 30px;
+        align-items: flex-start;
     }
-    footer .layar-dalam div {
-    width: 20%;
+        footer .layar-dalam div {
+        width: 20%;
     }
-    footer .layar-dalam h5 {
-    margin-top: 0px;
-    font-size: 20px;
-    font-weight: bold;
+        footer .layar-dalam h5 {
+        margin-top: 0px;
+        font-size: 20px;
+        font-weight: bold;
     }
-    footer .layar-dalam .copyright {
-    width: 100%;
-    margin-top: 30px;
-    padding-top: 30px;
-    border-top: 1px solid #666;
-    text-align: center;
+        footer .layar-dalam .copyright {
+        width: 100%;
+        margin-top: 30px;
+        padding-top: 30px;
+        border-top: 1px solid #666;
+        text-align: center;
     }
 
     .is-user-info:hover {
-        background-color: white;
+        background-color: #40513B;
         border: none;
         color: #40513B;
         border-radius: 20px;
     }
-
+  
     @media screen and (max-width: 768px) {
         .navbar-start {
             flex-direction: column;
@@ -271,6 +288,43 @@
 </style>
 
 <script>
+    
+    function kontak() {
+    let nama = $("#nama").val();
+    let email = $("#email").val();
+    let pesan = $("#pesan").val();
+
+    if (nama == '' || email == '' || pesan == '') {
+        Swal.fire(
+            'Oops',
+            'Data tidak lengkap!',
+            'error'
+        )
+    } else {
+        $.ajax({
+            type: "POST",
+            url: "/contact/save",
+            data: {
+                nama: nama,
+                email: email,
+                pesan: pesan
+            },
+            success: function (response) {
+                Swal.fire(
+                    'Done',
+                    'You are signed up, nice!',
+                    'success'
+                )
+                window.location.replace("/contact");
+            },
+        });
+    }
+
+
+}
+</script>
+
+<script>
     function toggleNavbar() {
         let target = $('#navbarBasicExample');
         $('.navbar-burger').toggleClass('is-active');
@@ -281,9 +335,6 @@
 <body>
 
     <div class="bg-nav">
-        <!-- <video autoplay muted loop>
-            <source src="../static/images/mobil.mp4" type="video/mp4" />
-          </video> -->
         <nav class="navbar" id="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
                 <a class="navbar-item" href="/">
@@ -298,6 +349,7 @@
                     <span aria-hidden="true"></span>
                 </a>
             </div>
+
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start navbar-center">
                     <a class="navbar-item home" href="/">Home</a>
@@ -315,7 +367,7 @@
 
                     {% if logged_in %}
                     {% if is_admin %}
-                    <a class="navbar-item" href="#">Cek Pesanan</a>
+                    <a class="navbar-item" href="/wisata/bookings">Cek Pesanan</a>
                     {% else %}
                     <a class="navbar-item" href="/cekpesanan/{{user_info.name}}">Cek Pesanan</a>
                     {% endif %}
@@ -344,93 +396,64 @@
                 {% endif %}
             </div>
         </nav>
-        
-    <div class="container marketing">
 
-        <hr class="featurette-divider1">
-
-        <!-- 1-->
-        <div class="row featurette1">
-        <div class="col-md-7">
-            <h2 class="featurette-heading">About Us <span class="text-muted">/ Tentang Kami</span></h2>
-            <p class="lead">Rentcar adalah solusi ideal untuk memenuhi kebutuhan perjalanan Anda dengan kenyamanan dan fleksibilitas. Dengan layanan rentcar, Anda dapat mengeksplorasi destinasi favorit Anda tanpa perlu khawatir tentang kendaraan pribadi. Menawarkan berbagai pilihan mobil yang sesuai dengan gaya dan kebutuhan perjalanan Anda, rentcar memberikan kemudahan dalam perencanaan perjalanan. Dari kendaraan ekonomis hingga mobil mewah, layanan ini memberikan akses yang mudah dan efisien ke alat transportasi yang sesuai dengan preferensi Anda. Dengan proses penyewaan yang cepat dan mudah, rentcar menjadi mitra yang handal untuk pengalaman perjalanan yang tanpa repot.</p>
-        </div>
-        <div class="col-md-5">
-            <img src="./static/images/about1.jpg" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text></img>
-        </div>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <!-- 2 -->
-        <div class="row featurette">
-        <div class="col-md-7 order-md-2">
-            <h2 class="featurette-heading">Mengapa Memilih Kami <span class="text-muted">/ Why Us</span></h2>
-            <p class="lead">1.	Armada yang digunakan adalah keluaran terbaru mulai dari tahun 2017, 2018, dan 2019.</p>
-            <p class="lead">2.	Harga sewa mobil yang relatif terjangkau.</p>
-            <p class="lead">3.	Pilihan mobil yang cukup beragam, bisa disesuaikan dengan kebutuhan untuk city tour dalam kota Majalengka, wisata, pickup/drop off dalam dan luar kota, urusan bisnis, kantor, dan sebagainya.</p>
-            <p class="lead">4.	Layanan lepas kunci atau tanpa sopir tersedia bagi Anda yang ingin mengendarai mobil sendiri.</p>
-            <p class="lead">5.	Layanan antar-jemput di tempat yang Anda tentukan seperti hotel, stasiun, terminal, kantor, dan sebagainya.</p>
-            <p class="lead">6.	Layanan 24 jam selalu siap melayani Anda.</p>
-        </div>
-        <div class="col-md-5 order-md-1">
-            <img src="./static/images/mengapa1.jpg" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text></img>
-        </div>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <!-- 3 -->
-        <div class="row featurette">
-        <div class="col-md-7">
-            <h2 class="featurette-heading">Keuntungan <span class="text-muted">/ Benefit</span></h2>
-            <p class="lead">1.	Mobilitas Tanpa Batas</p>
-            <p class="lead">2.	Kemudahan dan Kenyamanan</p>
-            <p class="lead">3.	Fleksibilitas Waktu</p>
-            <p class="lead">4.	Pilihan Kendaraan yang Beragam</p>
-            <p class="lead">5.	Efisiensi Biaya</p>
-        </div>
-        <div class="col-md-5">
-            <img src="./static/images/benefit1.jpg" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text></img>
-        </div>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <!-- /END THE FEATURETTES -->
-
-    </div><!-- /.container -->
-
-
+        <section class="section">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column is-half">
+                        <div class="jumbotron">
+                            <h2 class="title is-3 has-text-centered is-light"><span class="has-text-weight-light"></span>Contact</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="content-main">
+        <section id="contact">
+            <div class="contact" data-aos="zoom-in" data-aos-offset="350">
+              <h1 class="text-center mb-5"><i class="bi bi-envelope-fill"></i></h1>
+              <form name="contact-form">
+                <div class="row g-3">
+                  <div class="col">
+                    <input id="nama" type="text" class="form-control" placeholder="Masukan Nama" aria-label="Masukan Nama">
+                  </div>
+                  <div class="col">
+                    <input id="email" type="text" class="form-control" placeholder="Masukan Email" aria-label="Masukan Email">
+                  </div>
+                  <div class="form-floating">
+                    <textarea name="pesan" class="form-control" placeholder="Leave a comment here" id="pesan"
+                      style="height: 100px"></textarea>
+                    <label for="floatingTextarea2" style="color:grey;"> Tuliskan pesan</label>
+                  </div>
+                  <div class="btns">
+                    <button class="btn btn-outline-dark btn-kirim" onclick="kontak()">Kirim</button>
+              </form>
+        </section>
+    </div>
     <footer>
         <div class="layar-dalam">
             <div class="mr-auto mb-2">
                 <a class="is-inline-block" href="/">
-                    <img class="image" src="../static/images/rentcar.png" alt="" width="90px"></a>
+                    <img class="image" src="../static/images/rentcar-hitam.png" alt="" width="90px"></a>
             </div>
           <div>
             <!-- Facebook -->
-            <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
-            data-mdb-ripple-color="white"><i class="fab fa-facebook-f"></i></a>
+            <a class="btn btn-link btn-floating btn-lg text-black m-1" href="#!" role="button"
+            data-mdb-ripple-color="black"><i class="fab fa-facebook-f"></i></a>
   
            <!-- Whatsapp -->
-           <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
-             data-mdb-ripple-color="white"><i class="fab fa-whatsapp"></i></a>
+           <a class="btn btn-link btn-floating btn-lg text-black m-1" href="#!" role="button"
+             data-mdb-ripple-color="black"><i class="fab fa-whatsapp"></i></a>
   
            <!-- Instagram -->
-           <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
-             data-mdb-ripple-color="white"><i class="fab fa-instagram"></i></a>
+           <a class="btn btn-link btn-floating btn-lg text-black m-1" href="#!" role="button"
+             data-mdb-ripple-color="black"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
         <div class="layar-dalam">
-          <div class="copyright">&copy; 2023 RentCar</div>
+          <div class="copyright">&copy; 2021 RentCar</div>
         </div>
       </footer>
-    </main>
-
-
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-      
-  </body>
+</body>
 </html>

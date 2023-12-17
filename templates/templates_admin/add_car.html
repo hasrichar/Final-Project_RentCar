@@ -1,0 +1,17 @@
+<!-- templates_admin/add_car.html -->
+<form method="POST" action="{{ url_for('add_car') }}" enctype="multipart/form-data">
+     <!-- Include form fields for car details -->
+     <label for="judul">Judul:</label>
+     <input type="text" name="judul" required><br>
+ 
+     <label for="harga_rental">Harga Rental:</label>
+     <input type="text" name="harga_rental" required><br>
+ 
+     <!-- Add more fields as needed -->
+ 
+     <label for="image">Upload Gambar:</label>
+     <input type="file" name="image" accept="image/*" required><br>
+ 
+     <input type="submit" value="Add Car">
+ </form>
+ 

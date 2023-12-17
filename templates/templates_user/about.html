@@ -17,26 +17,25 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>RentCar | Home</title>
-</head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-JM66DMBuv+DoN3UWjb30ViFzv5fWk74+I3eB9NFVUhUhkK95IPWiZlnN3cPVmMR7IeTJ3jpsCYpBc0mPx9szAg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <title>RentCar | About</title>
+</head>
 
 <style>
     .bg-nav {
-        position: relative;
-        overflow: hidden;
-        border-radius: 0px 0px 3px 30px;
+        background-image: url('../static/images/gambar3.jpg');
+        border-radius: 0px 0px 30px 30px;
+        background-position:bottom;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-blend-mode: normal;
+        will-change: transform;
         height: 400px;
     }
-
-    .bg-nav video {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    .featurette-divider1 {
+        margin-top: 28%; /* Adjust this value based on your needs */
     }
 
     .navbar {
@@ -175,7 +174,7 @@
         color: white;
     }
     /* Footer */
-        footer {
+    footer {
         padding: 50px 0px 15px 0px;
         background-color:  #d6d2bf;
         color: black;
@@ -209,7 +208,7 @@
         color: #40513B;
         border-radius: 20px;
     }
-  
+   
     @media screen and (max-width: 768px) {
         .navbar-start {
             flex-direction: column;
@@ -248,6 +247,22 @@
             background-color: #EDF1D6;
         }
 
+        .image-liburan {
+            width: 100%;
+        }
+
+        .is-user-info {
+            background-color: transparent;
+            border: none;
+            color: #40513B;
+        }
+
+        .is-user-info:hover{
+            background-color: #40513B;
+            border: none;
+            color: white;
+            border-radius: 20px;
+        }
     }
 </style>
 
@@ -262,9 +277,9 @@
 <body>
 
     <div class="bg-nav">
-        <video autoplay muted loop>
+        <!-- <video autoplay muted loop>
             <source src="../static/images/mobil.mp4" type="video/mp4" />
-          </video>
+          </video> -->
         <nav class="navbar" id="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
                 <a class="navbar-item" href="/">
@@ -282,16 +297,15 @@
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start navbar-center">
                     <a class="navbar-item home" href="/">Home</a>
-                        <li class="navbar-item dropdown"> 
-                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
-                            Informasi Layanan
-                            </a>
-                            <ul class="dropdown-menu">
-                                <a class="dropdown-item" href="/carapemesanan">Cara Pemesanan</a>
-                                <a class="dropdown-item" href="/syaratketentuan">Syarat & Ketentuan</a>
-                            </ul>
-                        </li>
-
+                    <li class="navbar-item dropdown"> 
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+                        Informasi Layanan
+                        </a>
+                        <ul class="dropdown-menu">
+                            <a class="dropdown-item" href="/carapemesanan">Cara Pemesanan</a>
+                            <a class="dropdown-item" href="/syaratketentuan">Syarat & Ketentuan</a>
+                        </ul>
+                    </li>
                     <a class="navbar-item" href="/about">About</a>
                     <a class="navbar-item" href="/contact">Contact</a>
 
@@ -326,90 +340,63 @@
                 {% endif %}
             </div>
         </nav>
+        
+    <div class="container marketing">
 
-        <section class="section">
-            <div class="container">
-                <div class="columns is-centered">
-                    <div class="column is-half">
-                        <div class="jumbotron">
-                            <h2 class="title is-3 has-text-centered is-light"><span class="has-text-weight-light">Hai,
-                                     </span> Selamat Datang di RentCar</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <hr class="featurette-divider1">
 
-    </div>
+        <!-- 1-->
+        <div class="row featurette1">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">About Us <span class="text-muted">/ Tentang Kami</span></h2>
+            <p class="lead">Rentcar adalah solusi ideal untuk memenuhi kebutuhan perjalanan Anda dengan kenyamanan dan fleksibilitas. Dengan layanan rentcar, Anda dapat mengeksplorasi destinasi favorit Anda tanpa perlu khawatir tentang kendaraan pribadi. Menawarkan berbagai pilihan mobil yang sesuai dengan gaya dan kebutuhan perjalanan Anda, rentcar memberikan kemudahan dalam perencanaan perjalanan. Dari kendaraan ekonomis hingga mobil mewah, layanan ini memberikan akses yang mudah dan efisien ke alat transportasi yang sesuai dengan preferensi Anda. Dengan proses penyewaan yang cepat dan mudah, rentcar menjadi mitra yang handal untuk pengalaman perjalanan yang tanpa repot.</p>
+        </div>
+        <div class="col-md-5">
+            <img src="./static/images/about1.jpg" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text></img>
+        </div>
+        </div>
 
-    <div class="content-main">
-        <section class="">
-            <div class="intro perintah">
-                <h2 class="title">Pilihan dan Harga Rental Mobil</h2>
-                <p class="subtitle is-6">Berikut adalah detail unit yang kami sediakan dengan harga sewanya</p>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card" style="width: 20rem;">
-                        <img src="../static/images/gambar3.jpg" class="card-img-top" alt="Innova Zenix"
-                             style="height: 200px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">Xpander</h5>
-                            <p class="card-text">Start From Rp. 700.0000/Hari</p>
-                            <a href="../templates/detail.html" class="btn btn-primary" onclick="sewa()">Sewa</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card" style="width: 20rem;">
-                        <img src="../static/images/gambar5.jpg" class="card-img-top" alt="Alphard / Vellfire type G"
-                             style="height: 200px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">Gallardo</h5>
-                            <p class="card-text">Start From Rp. 100.000.000/Hari</p>
-                            <a href="../templates/detail.html" class="btn btn-primary">Sewa</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card" style="width: 20rem;">
-                        <img src="../static/images/gambar6.jpg" class="card-img-top" alt="Innova Zenix"
-                             style="height: 200px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">Skyline</h5>
-                            <p class="card-text">Start From Rp. 80.0000.000/Hari</p>
-                            <a href="../templates/detail.html" class="btn btn-primary">Sewa</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-    
-        <section class="promosi">
-            <div class="columns">
-                <div class="column is-4 image image-liburan" style="margin-left: auto;">
-                    <img src="../static/images/nice.jpg" alt="">
-                </div>                
-                <div class="column is-8 content">
-                    <div class="content-container" style="padding-right: 20px; max-width: 800px;">
-                        <h2 class="title">Yuukk nikmati perjalananmu dengan sewa mobil di RentCar</h2>
-                        <p style="text-align: justify;">Nikmati pengalaman sewa mobil yang lebih mudah dan
-                            nyaman dengan website kami!
-                            Lupakan kelelahan antri di loket tiket konvensional, karena dengan layanan kami,
-                            Anda dapat sewa mobil favorit Anda secara online dengan beberapa kali klik
-                            saja dan rasakan kemudahan dalam
-                            mendapatkan pemesanan penyewaan mobil untuk ke tempat liburan impian Anda. Dengan antarmuka yang
-                            user-friendly, harga yang kompetitif, dan opsi pembayaran yang fleksibel, kami
-                            menawarkan solusi terbaik untuk sewa mobil Anda. Jadi, kunjungi website
-                            kami sekarang dan buatlah momen berharga tanpa harus khawatir lagi!
-                        </p>
-                    </div>
-                    
-                </div>
-            </div>
-        </section>
-    </div>
+        <hr class="featurette-divider">
+
+        <!-- 2 -->
+        <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">Mengapa Memilih Kami <span class="text-muted">/ Why Us</span></h2>
+            <p class="lead">1.	Armada yang digunakan adalah keluaran terbaru mulai dari tahun 2017, 2018, dan 2019.</p>
+            <p class="lead">2.	Harga sewa mobil yang relatif terjangkau.</p>
+            <p class="lead">3.	Pilihan mobil yang cukup beragam, bisa disesuaikan dengan kebutuhan untuk city tour dalam kota Majalengka, wisata, pickup/drop off dalam dan luar kota, urusan bisnis, kantor, dan sebagainya.</p>
+            <p class="lead">4.	Layanan lepas kunci atau tanpa sopir tersedia bagi Anda yang ingin mengendarai mobil sendiri.</p>
+            <p class="lead">5.	Layanan antar-jemput di tempat yang Anda tentukan seperti hotel, stasiun, terminal, kantor, dan sebagainya.</p>
+            <p class="lead">6.	Layanan 24 jam selalu siap melayani Anda.</p>
+        </div>
+        <div class="col-md-5 order-md-1">
+            <img src="./static/images/mengapa1.jpg" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text></img>
+        </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <!-- 3 -->
+        <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">Keuntungan <span class="text-muted">/ Benefit</span></h2>
+            <p class="lead">1.	Mobilitas Tanpa Batas</p>
+            <p class="lead">2.	Kemudahan dan Kenyamanan</p>
+            <p class="lead">3.	Fleksibilitas Waktu</p>
+            <p class="lead">4.	Pilihan Kendaraan yang Beragam</p>
+            <p class="lead">5.	Efisiensi Biaya</p>
+        </div>
+        <div class="col-md-5">
+            <img src="./static/images/benefit1.jpg" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text></img>
+        </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <!-- /END THE FEATURETTES -->
+
+    </div><!-- /.container -->
+
 
     <footer>
         <div class="layar-dalam">
@@ -435,7 +422,9 @@
           <div class="copyright">&copy; 2021 RentCar</div>
         </div>
       </footer>
+    </main>
 
-</body>
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
+  </body>
 </html>
