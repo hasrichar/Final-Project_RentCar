@@ -76,7 +76,7 @@
             transition: background-color ease-in .2s;
         }
         .logout-btn:hover {
-            background-color: #FF9900;
+            background-color: red;
         }
         .logout-btn .icon {
             margin-right: 12px;
@@ -98,7 +98,7 @@
                 </a>
             </div>
             <div class="list-item">
-                <a href="#">
+                <a href="add_car">
                     <img src="/static/asset/2.png" alt="" class="icon">
                     <span class="description">Tambah Mobil</span>
                 </a>
@@ -110,7 +110,7 @@
                 </a>
             </div>
             <a class="logout-btn" onclick="sign_out()">
-                <img src="/static/asset/logout-icon.png" alt="" class="icon">
+                <img src="/static/asset/logout.png" alt="" class="icon">
                 <span class="description">Logout</span>
             </a>
         </div>
@@ -124,8 +124,6 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
-                <!-- Add Car link -->
-                <a href="{{ url_for('add_car') }}" class="btn btn-success">Add Car</a>
 
                 <table class="table table-bordered table-hovered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
