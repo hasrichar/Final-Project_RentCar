@@ -136,22 +136,6 @@ function sign_out() {
     // });
 }
 
-function sign_out() {
-    $.removeCookie("mytoken", { path: "/" });
-    alert("Logged out!");
-    window.location.href = "/";
-    // Swal.fire({
-    //     icon: 'success',
-    //     title: 'Logged Out!',
-    //     text: 'You have been successfully logged out.',
-    //     showConfirmButton: false,
-    //     timer: 2000, // Adjust the timer value (in milliseconds) as needed
-    //     onClose: function() {
-    //         window.location.reload();
-    //     }
-    // });
-}
-
 function openModal() {
     const modal = document.getElementById('modal');
     modal.classList.add('is-active');

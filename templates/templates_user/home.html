@@ -26,9 +26,9 @@
     .bg-nav {
         position: relative;
         overflow: hidden;
-        border-radius: 0px 0px 3px 30px;
+        border-radius: 0px 0px 30px 30px;
         height: 400px;
-    }
+}
 
     .bg-nav video {
         position: absolute;
@@ -37,7 +37,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-    }
+}
 
     .navbar {
         padding: 1rem;
@@ -83,7 +83,7 @@
 
     .is-daftar {
         background-color: #d6d2bf;
-        color: #40513B;
+        color: white;
         border-radius: 20px;
         border: none;
     }
@@ -104,14 +104,14 @@
     }
 
     .is-btn-delete {
-        background-color:#F5DEB3;
+        background-color: #FF0060;
         border-radius: 20px;
         color: white;
         border: none;
     }
 
     .is-btn-delete:hover {
-        background-color: #D2B48C;
+        background-color: #ee035d;
         color: white;
     }
 
@@ -175,41 +175,39 @@
         color: white;
     }
     /* Footer */
-        footer {
-        padding: 50px 0px 15px 0px;
-        background-color:  #d6d2bf;
-        color: black;
+    footer {
+    padding: 50px 0px 50px 0px;
+    background-color: #d6d2bf;
+    color: #fff;
     }
-        footer .layar-dalam {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        margin-left: 30px;
-        align-items: flex-start;
+    footer .layar-dalam {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     }
-        footer .layar-dalam div {
-        width: 20%;
+    footer .layar-dalam div {
+    width: 20%;
     }
-        footer .layar-dalam h5 {
-        margin-top: 0px;
-        font-size: 20px;
-        font-weight: bold;
+    footer .layar-dalam h5 {
+    margin-top: 0px;
+    font-size: 20px;
+    font-weight: bold;
     }
-        footer .layar-dalam .copyright {
-        width: 100%;
-        margin-top: 30px;
-        padding-top: 30px;
-        border-top: 1px solid #666;
-        text-align: center;
+    footer .layar-dalam .copyright {
+    width: 100%;
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #666;
+    text-align: center;
     }
 
     .is-user-info:hover {
-        background-color: #40513B;
+        background-color: white;
         border: none;
         color: #40513B;
         border-radius: 20px;
     }
-  
+
     @media screen and (max-width: 768px) {
         .navbar-start {
             flex-direction: column;
@@ -248,6 +246,22 @@
             background-color: #EDF1D6;
         }
 
+        .image-liburan {
+            width: 100%;
+        }
+
+        .is-user-info {
+            background-color: transparent;
+            border: none;
+            color: #40513B;
+        }
+
+        .is-user-info:hover{
+            background-color: #40513B;
+            border: none;
+            color: white;
+            border-radius: 20px;
+        }
     }
 </style>
 
@@ -327,7 +341,7 @@
             </div>
         </nav>
 
-        <section class="section">
+        <section class="section" id="detailSection">
             <div class="container">
                 <div class="columns is-centered">
                     <div class="column is-half">
@@ -339,7 +353,6 @@
                 </div>
             </div>
         </section>
-
     </div>
 
     <div class="content-main">
@@ -356,7 +369,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Xpander</h5>
                             <p class="card-text">Start From Rp. 700.0000/Hari</p>
-                            <a href="/detail" class="btn btn-primary" onclick="sewa()">Sewa</a>
+                            <a href="#" class="btn btn-primary" onclick="sewa('Xpander', 'Rp. 700.0000/Hari')">Sewa</a>
                         </div>
                     </div>
                 </div>
@@ -365,9 +378,9 @@
                         <img src="../static/images/gambar5.jpg" class="card-img-top" alt="Innova Zenix"
                              style="height: 200px; object-fit: cover;">
                         <div class="card-body">
-                            <h5 class="card-title">Xpander</h5>
-                            <p class="card-text">Start From Rp. 700.0000/Hari</p>
-                            <a href="/detail" class="btn btn-primary" onclick="sewa()">Sewa</a>
+                            <h5 class="card-title">Gallardo</h5>
+                            <p class="card-text">Start From Rp. 150.000.000/Hari</p>
+                            <a href="#" class="btn btn-primary" onclick="sewa('Gallardo', 'Rp. 150.000.000/Hari')">Sewa</a>
                         </div>
                     </div>
                 </div>
@@ -376,46 +389,12 @@
                         <img src="../static/images/gambar6.jpg" class="card-img-top" alt="Innova Zenix"
                              style="height: 200px; object-fit: cover;">
                         <div class="card-body">
-                            <h5 class="card-title">Xpander</h5>
-                            <p class="card-text">Start From Rp. 700.0000/Hari</p>
-                            <a href="/detail" class="btn btn-primary" onclick="sewa()">Sewa</a>
+                            <h5 class="card-title">Skyline</h5>
+                            <p class="card-text">Start From Rp. 900.0000.000/Hari</p>
+                            <a href="/detail" class="btn btn-primary" onclick="sewa('Skyline', 'Rp. 100.0000.000/Hari')">Sewa</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card" style="width: 20rem;">
-                        <img src="../static/images/gambar3.jpg" class="card-img-top" alt="Innova Zenix"
-                             style="height: 200px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">Xpander</h5>
-                            <p class="card-text">Start From Rp. 700.0000/Hari</p>
-                            <a href="/detail" class="btn btn-primary" onclick="sewa()">Sewa</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card" style="width: 20rem;">
-                        <img src="../static/images/gambar3.jpg" class="card-img-top" alt="Innova Zenix"
-                             style="height: 200px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">Xpander</h5>
-                            <p class="card-text">Start From Rp. 700.0000/Hari</p>
-                            <a href="/detail" class="btn btn-primary" onclick="sewa()">Sewa</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card" style="width: 20rem;">
-                        <img src="../static/images/gambar3.jpg" class="card-img-top" alt="Innova Zenix"
-                             style="height: 200px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">Xpander</h5>
-                            <p class="card-text">Start From Rp. 700.0000/Hari</p>
-                            <a href="/detail" class="btn btn-primary" onclick="sewa()">Sewa</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
     </div>
     

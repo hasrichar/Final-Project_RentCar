@@ -111,14 +111,14 @@ def add_card():
 def signup():
     return render_template('/templates_user/register.html')
 
-@app.route('/edit_card', methods=['GET'])
-def edit_card():
-    return render_template('/templates_admin/edit.html') 
+# @app.route('/edit_car', methods=['GET'])
+# def edit_card():
+#     return render_template('/templates_admin/edit.html') 
 
 
-@app.route('/delete_card', methods=['POST']) 
-def delete_card():
-    return jsonify({'result': 'success'})
+# @app.route('/delete_car', methods=['POST']) 
+# def delete_card():
+#     return jsonify({'result': 'success'})
 
 @app.route('/sign_up/save', methods = ['POST'])
 def sign_up():
@@ -232,7 +232,11 @@ def admin_sign_in():
                 "msg": "We could not find an admin with that id/password combination",
             }
         )
-    
+
+@app.route('/logout')
+def logout():
+    return render_template('/templates_user/home.html')
+
 @app.route('/syaratketentuan')
 def syaratketentuan():
     return render_template('/templates_user/syaratketentuan.html')
@@ -308,13 +312,21 @@ def edit_car(car_id):
     # Render a form to edit the car details
     return render_template('templates_admin/edit_car.html', car=car_details)
 
-@app.route('/delete_car/<car_id>', methods=['GET'])
+@app.route('/delete_car/<car_id>', methods=['GET', 'POST'])
 def delete_car(car_id):
-    # Your delete logic here
-    # ...
+    # Fetch car details from the database using car_id
+    car_details = db.cars.find_one({'_id': ObjectId(car_id)})
 
-    # Redirect to the admin home page after deleting the car
-    return redirect(url_for('home_admin'))
+    # Handle both GET (display form) and POST (update data) requests
+    if request.method == 'POST':
+        # Update car details in the database
+        # ...
+
+        # Redirect to the admin home page after editing the car
+        return redirect(url_for('home_admin'))
+
+    # Render a form to edit the car details
+    return render_template('templates_admin/edit_car.html', car=car_details)
 
 @app.route('/detail')
 def detail():
