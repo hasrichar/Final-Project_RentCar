@@ -94,18 +94,18 @@ def home_admin():
     return render_template('templates_admin/home.html', msg=msg)
 
 
-@app.route('/tambah', methods=['POST'])
-def add_card():
-    name = request.form.get('name')
-    price = request.form.get('price')
-    image = request.form.get('image')
+# @app.route('/tambah', methods=['POST'])
+# def add_card():
+#     name = request.form.get('name')
+#     price = request.form.get('price')
+#     image = request.form.get('image')
 
-    if not name or not price or not image:
-        return jsonify({'result': 'fail', 'msg': 'Please fill in all fields'})
+#     if not name or not price or not image:
+#         return jsonify({'result': 'fail', 'msg': 'Please fill in all fields'})
 
-    db.cards.insert_one({"name": name, "price": price, "image": image})
+#     db.cards.insert_one({"name": name, "price": price, "image": image})
 
-    return redirect(url_for('home_admin'))
+#     return redirect(url_for('home_admin'))
 
 @app.route('/signup')
 def signup():
@@ -253,19 +253,24 @@ def about():
 def contact():
     return render_template('/templates_user/contact.html')
     
-@app.route('/contact/save', methods=['POST'])
+@app.route('/contact_save', methods=['POST'])
 def contact_save():
     nama = request.form.get('nama')
     email = request.form.get('email')
-    pesan = request.form.get('pesan')
+    phone = request.form.get('phone')
+    message = request.form.get('message')
+
+    print(f"Received data: {nama}, {email}, {phone}, {message}")
 
     doc = {
         "nama": nama,
-        "email": email, 
-        "pesan": pesan
+        "email": email,
+        "phone": phone,
+        "pesan": message
     }
     db.contact.insert_one(doc)
     return jsonify({'result': 'success'})
+
 
 @app.route('/add_car', methods=['GET', 'POST'])
 def add_car():
@@ -295,7 +300,6 @@ def add_car():
     return render_template('templates_admin/add_car.html', cars=cars)
 
 
-
 @app.route('/edit_car/<car_id>', methods=['GET', 'POST'])
 def edit_car(car_id):
     # Fetch car details from the database using car_id
@@ -303,34 +307,28 @@ def edit_car(car_id):
 
     # Handle both GET (display form) and POST (update data) requests
     if request.method == 'POST':
-        # Update car details in the database
-        # ...
 
-        # Redirect to the admin home page after editing the car
         return redirect(url_for('home_admin'))
 
-    # Render a form to edit the car details
     return render_template('templates_admin/edit_car.html', car=car_details)
 
 @app.route('/delete_car/<car_id>', methods=['GET', 'POST'])
 def delete_car(car_id):
-    # Fetch car details from the database using car_id
+
     car_details = db.cars.find_one({'_id': ObjectId(car_id)})
 
-    # Handle both GET (display form) and POST (update data) requests
     if request.method == 'POST':
-        # Update car details in the database
-        # ...
-
-        # Redirect to the admin home page after editing the car
+    
         return redirect(url_for('home_admin'))
-
-    # Render a form to edit the car details
     return render_template('templates_admin/edit_car.html', car=car_details)
 
 @app.route('/detail')
 def detail():
     return render_template('/templates_user/detail.html')
+
+@app.route('/cek_pesanan/<user_info>')
+def cek_pesanan(user_info):
+    return render_template('/templates_user/cek_pesanan.html', user_info=user_info)
 
 
 if __name__ == '__main__':

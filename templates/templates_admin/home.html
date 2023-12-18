@@ -102,11 +102,7 @@
                 </a>
             </div>
             <div class="list-item">
-<<<<<<< HEAD
-                <a href="/detail">
-=======
-                <a href="add_car">
->>>>>>> 900d8a60ba25b15f75ad9c0a3705bb9042559968
+                <a href="/add_car">
                     <img src="/static/asset/2.png" alt="" class="icon">
                     <span class="description">Tambah Mobil</span>
                 </a>
@@ -117,13 +113,8 @@
                     <span class="description">Cek Booking</span>
                 </a>
             </div>
-<<<<<<< HEAD
             <a href="/logout" class="logout-btn">
                 <img src="/static/asset/logout-icon.png" alt="" class="icon">
-=======
-            <a class="logout-btn" onclick="sign_out()">
-                <img src="/static/asset/logoutt.png" alt="" class="icon">
->>>>>>> 900d8a60ba25b15f75ad9c0a3705bb9042559968
                 <span class="description">Logout</span>
             </a>
         </div>
@@ -134,7 +125,6 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
-<<<<<<< HEAD
                 <a href="{{ url_for('add_car') }}" class="btn btn-success">Add Car</a>
     
                 <table class="table table-bordered table-hovered" id="dataTable" width="100%" cellspacing="0">
@@ -150,8 +140,14 @@
                         {% for car in cars %}
                         <tr>
                             <td>{{ car.judul }}</td>
-                            <td>{{ car.harga }}</td>
-                            <td>{{ car.image }}</td>
+                            <td>{% if car.harga_rental %}{{ car.harga_rental }}{% else %}-{% endif %}</td>
+                            <td>
+                                {% if car.image_path %}
+                                    <img src="{{ url_for('static', filename=car.image_path) }}" alt="Car Image" style="max-width: 100px; max-height: 100px;">
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
                             <td>
                                 <div class="d-flex justify-content-end">
                                     <a href="{{ url_for('edit_car', car_id=car.id) }}" class="btn btn-warning">Edit</a>
@@ -161,42 +157,11 @@
                         </tr>
                         {% endfor %}
                     </tbody>
+                    
+                    
+                    
                 </table>
             </div>
-=======
-                <!-- Add Car link -->
-                <a href="{{ url_for('add_car') }}" class="btn btn-success">Add Car</a>
-
-            <table class="table table-bordered table-hovered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <!-- ... existing code ... -->
-                        <th>Judul</th>
-                        <th>Harga</th>
-                        <th>Image</th>
-                        <th>Action</th> <!-- Add a new column for actions -->
-                    </tr>
-                </thead>
-                <!-- ... existing code ... -->
-                <tbody>
-                    <!-- Loop through data from the database -->
-                    {% for car in cars %}
-                    <tr>
-                        <!-- ... existing code ... -->
-                        <td>
-                            <!-- Move the buttons to the right corner -->
-                            <div class="d-flex justify-content-end">
-                                <a href="{{ url_for('edit_car', car_id=car.id) }}" class="btn btn-warning">Edit</a>
-                                <a href="{{ url_for('delete_car', car_id=car.id) }}" class="btn btn-danger">Delete</a>
-                            </div>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                    <!-- End loop -->
-                </tbody>
-                <!-- ... existing code ... -->
-            </table>
->>>>>>> 900d8a60ba25b15f75ad9c0a3705bb9042559968
         </div>
     </div>
 

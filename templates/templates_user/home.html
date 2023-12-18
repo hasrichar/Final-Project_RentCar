@@ -26,11 +26,7 @@
     .bg-nav {
         position: relative;
         overflow: hidden;
-<<<<<<< HEAD
-        border-radius: 0px 0px 30px 30px;
-=======
         border-radius: 0px 0px 7px 7px;
->>>>>>> 900d8a60ba25b15f75ad9c0a3705bb9042559968
         height: 400px;
 }
 
@@ -87,11 +83,11 @@
 
     .is-daftar {
         background-color: #d6d2bf;
-        color: white;
+        color: #40513B;
         border-radius: 20px;
         border: none;
     }
-
+    
     .is-daftar:hover {
         background-color: white;
     }
@@ -178,39 +174,42 @@
         border: none;
         color: white;
     }
-    /* Footer */
-    footer {
-    padding: 50px 0px 50px 0px;
-    background-color: #d6d2bf;
-    color: #fff;
+     /* Footer */
+  footer {
+        padding: 50px 0px 15px 0px;
+        background-color:  #d6d2bf;
+        color: black;
     }
-    footer .layar-dalam {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+        footer .layar-dalam {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-left: 30px;
+        align-items: flex-start;
     }
-    footer .layar-dalam div {
-    width: 20%;
+        footer .layar-dalam div {
+        width: 20%;
     }
-    footer .layar-dalam h5 {
-    margin-top: 0px;
-    font-size: 20px;
-    font-weight: bold;
+        footer .layar-dalam h5 {
+        margin-top: 0px;
+        font-size: 20px;
+        font-weight: bold;
     }
-    footer .layar-dalam .copyright {
-    width: 100%;
-    margin-top: 30px;
-    padding-top: 30px;
-    border-top: 1px solid #666;
-    text-align: center;
+        footer .layar-dalam .copyright {
+        width: 100%;
+        margin-top: 30px;
+        padding-top: 30px;
+        border-top: 1px solid #666;
+        text-align: center;
     }
 
     .is-user-info:hover {
-        background-color: white;
+        background-color: #40513B;
         border: none;
         color: #40513B;
         border-radius: 20px;
     }
+
 
     @media screen and (max-width: 768px) {
         .navbar-start {
@@ -315,9 +314,9 @@
 
                     {% if logged_in %}
                     {% if is_admin %}
-                    <a class="navbar-item" href="#">Cek Pesanan</a>
+                    <a class="navbar-item" href="/cek_pesanan">Cek Pesanan</a>
                     {% else %}
-                    <a class="navbar-item" href="/cekpesanan/{{user_info.name}}">Cek Pesanan</a>
+                    <a class="navbar-item" href="{{ url_for('cek_pesanan', user_info=user_info.name) }}">Cek Pesanan</a>
                     {% endif %}
                     {% endif %}
                 </div>
@@ -373,7 +372,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Xpander</h5>
                             <p class="card-text">Start From Rp. 700.0000/Hari</p>
-                            <a href="#" class="btn btn-primary" onclick="sewa('Xpander', 'Rp. 700.0000/Hari')">Sewa</a>
+                            <a href="/detail" class="btn btn-primary" onclick="sewa('Xpander', 'Rp. 700.0000/Hari')">Sewa</a>
                         </div>
                     </div>
                 </div>
@@ -384,7 +383,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Gallardo</h5>
                             <p class="card-text">Start From Rp. 150.000.000/Hari</p>
-                            <a href="#" class="btn btn-primary" onclick="sewa('Gallardo', 'Rp. 150.000.000/Hari')">Sewa</a>
+                            <a href="/detail" class="btn btn-primary" onclick="sewa('Gallardo', 'Rp. 150.000.000/Hari')">Sewa</a>
                         </div>
                     </div>
                 </div>
@@ -399,8 +398,6 @@
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
-=======
 
                 <div class="col-md-3">
                     <div class="card" style="width: 20rem;">
@@ -416,7 +413,6 @@
 
                 </div>
             </div>
->>>>>>> 900d8a60ba25b15f75ad9c0a3705bb9042559968
         </section>
     </div>
     

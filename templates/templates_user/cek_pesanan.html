@@ -23,7 +23,7 @@
 
 <style>
     .bg-nav {
-        background-image: url('../static/images/gambar1.jpg');
+        /* background-image: url('../static/images/gambar1.jpg'); */
         border-radius: 0px 0px 30px 30px;
         background-position: left top;
         background-size: cover;
@@ -48,7 +48,7 @@
 
     .navbar-item {
         margin-left: 1rem;
-        color: white;
+        color: black;
         border-radius: 20px;
     }
 
@@ -90,7 +90,7 @@
 
     .is-masuk {
         background-color: transparent;
-        color: white;
+        color: black;
         border: none;
     }
 
@@ -169,7 +169,16 @@
         border: none;
         color: white;
     }
+    .is-upload {
+        background-color: #ee035d;
+        border-radius: 20px;
+        color: white;
+    }
 
+    .is-upload:hover {
+        background-color: #ee035d;
+        color: white;
+    }
    /* Footer */
    footer {
         padding: 50px 0px 15px 0px;
@@ -276,7 +285,7 @@
         <nav class="navbar" id="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
                 <a class="navbar-item" href="/">
-                    <img src="../static/images/rentcar.png" alt="" class="title is-4 is-logo">
+                    <img src="../static/images/rentcar-hitam.png" alt="" class="title is-4 is-logo">
                 </a>
 
                 <!-- Toggle button for mobile -->
@@ -334,7 +343,67 @@
                 {% endif %}
             </div>
         </nav>
-
-
+        <div class="content-main">
+            <div class="intro perintah">
+                <h2 class="title">Pesanan sewa mobil kamu</h2>
+                <p class="subtitle is-6">Pesananmu akan muncul disini!</p>
+            </div>
+            <div class="columns is-multiline">
+            
+                <div class="column is-4">
+                    <div class="card" style="height: 300px;">
+                        <div class="card-content">
+                            <div class="status-box
+                            
+                                status-box-pending
+                            ">Pending</div>
+                            <p class="title is-4">Innova</p>
+                            <p></p>
+                            <p>Lama sewa : 2 hari </p>
+                            <p>Total Bayar : Rp.800.000,00</p>
+                            
+                            <input type="file" id="bukti-bayar-65689397949c9a2d7302a69c" accept="image/*" class="button is-fullwidth" style="margin-top: 0.5rem;">
+                            <button class="button is-upload" onclick="updateProof('65689397949c9a2d7302a69c')">Upload Bukti Bayar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="card" style="height: 300px;">
+                        <div class="card-content">
+                            <div class="status-box
+                            
+                                status-box-pending
+                            ">Pending</div>
+                            <p class="title is-4">Innova</p>
+                            <p></p>
+                            <p>Lama sewa : 2 hari </p>
+                            <p>Total Bayar : Rp.800.000,00</p>
+                            
+                            <input type="file" id="bukti-bayar-65689397949c9a2d7302a69c" accept="image/*" class="button is-fullwidth" style="margin-top: 0.5rem;">
+                            <button class="button is-upload" onclick="updateProof('65689397949c9a2d7302a69c')">Upload Bukti Bayar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="card" style="height: 300px;">
+                        <div class="card-content">
+                            <div class="status-box
+                            
+                                status-box-pending
+                            ">Pending</div>
+                            <p class="title is-4">Innova</p>
+                            <p></p>
+                            <p>Lama sewa : 2 hari </p>
+                            <p>Total Bayar : Rp.800.000,00</p>
+                            
+                            <input type="file" id="bukti-bayar-65689397949c9a2d7302a69c" accept="image/*" class="button is-fullwidth" style="margin-top: 0.5rem;">
+                            <button class="button is-upload" onclick="updateProof('65689397949c9a2d7302a69c')">Upload Bukti Bayar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
 </body>
 </html>

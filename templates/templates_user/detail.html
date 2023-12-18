@@ -318,9 +318,9 @@
             <div class="navbar-start navbar-center">
                 <a class="navbar-item home" href="/">Home</a>
                 <li class="navbar-item dropdown"> 
-                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
-                    Informasi Layanan
-                    </a>
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" style="color: white;">
+                        Informasi Layanan
+                    </a>                    
                     <ul class="dropdown-menu">
                         <a class="dropdown-item" href="/carapemesanan">Cara Pemesanan</a>
                         <a class="dropdown-item" href="/syaratketentuan">Syarat & Ketentuan</a>
@@ -363,26 +363,34 @@
   </div>
   <section class="deskripsi">
     <div class="wrapper">
-      <img src="../static/asset/gambar6.jpg" width="100%" alt="" />
-      <div class="text-box">
-        <h1>Nissan Skyline GTR R34</h1>
-        <h2>Harga Sewa : <span class="tour-price">Rp. 900.000.000/per hari</span></h2>
-        <h3>Tahun : 2020</h3>
-        <h3>Transmisi : Manual</h3>
-        <h3>Bahan Bakar : Bensin</h3>
+        <img src="../static/asset/gambar6.jpg" width="100%" alt="" />
+        <div class="text-box">
+            <h1>Nissan Skyline GTR R34</h1>
+            <h2>Harga Sewa : <span class="tour-price">Rp. 900.000.000/per hari</span></h2>
+            <h3>Tahun : 2020</h3>
+            <h3>Transmisi : Manual</h3>
+            <h3>Bahan Bakar : Bensin</h3>
 
-        <hr class="featurette-divider1">
-        <h2>Booking Sekarang :</h2>
+            <hr class="featurette-divider1">
+            <h2>Booking Sekarang :</h2>
 
-      <label for="tanggal_tour">Pengambilan:</label>
-      <input type="date" id="tanggal_tour" name="tanggal_tour" required />
+            <label for="tanggal_tour">Pengambilan:</label>
+            <input type="date" id="tanggal_tour" name="tanggal_tour" required />
 
-      <label for="tanggal_tour">Pengembalian:</label>
-      <input type="date" id="tanggal_tour" name="tanggal_tour" required />
+            <label for="tanggal_tour">Pengembalian:</label>
+            <input type="date" id="tanggal_tour" name="tanggal_tour" required />
 
-      </div>
+            <!-- Tombol Submit -->
+            <form action="/cek_pesanan" method="post">
+                <div class="d-grid">
+                    <button class="btn btn-primary btn-lg" id="submitButton" type="submit" style="background-color: #d6d2bf; color: black; border: none;">Submit</button>
+                </div>
+            </form>
+            
+        </div>
     </div>
-  </section>
+</section>
+
 
   <footer>
     <div class="layar-dalam">
