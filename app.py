@@ -89,32 +89,9 @@ def home_admin():
         msg = 'There was a problem logging you in'
     return render_template('templates_admin/home.html', msg=msg)
 
-
-# @app.route('/tambah', methods=['POST'])
-# def add_card():
-#     name = request.form.get('name')
-#     price = request.form.get('price')
-#     image = request.form.get('image')
-
-#     if not name or not price or not image:
-#         return jsonify({'result': 'fail', 'msg': 'Please fill in all fields'})
-
-#     db.cards.insert_one({"name": name, "price": price, "image": image})
-
-#     return redirect(url_for('home_admin'))
-
 @app.route('/signup')
 def signup():
     return render_template('/templates_user/register.html')
-
-# @app.route('/edit_car', methods=['GET'])
-# def edit_card():
-#     return render_template('/templates_admin/edit.html') 
-
-
-# @app.route('/delete_car', methods=['POST']) 
-# def delete_card():
-#     return jsonify({'result': 'success'})
 
 @app.route('/sign_up/save', methods = ['POST'])
 def sign_up():
@@ -333,7 +310,9 @@ def contact_save():
         "pesan": pesan
     }
     db.contact.insert_one(doc)
-    return jsonify({'result': 'success'})
+
+    # Instead of using jsonify, you can return a plain response
+    return 'Data saved successfully!'
 
 
 @app.route('/add_car', methods=['GET', 'POST'])
@@ -396,7 +375,24 @@ def detail():
 
 @app.route('/cek_pesanan/<user_info>')
 def cek_pesanan(user_info):
-    return render_template('/templates_user/cek_pesanan.html', user_info=user_info)
+    token_receive = request.cookies.get(TOKEN_KEY)
+    try:
+        payload =jwt.decode(
+            token_receive,
+            SECRET_KEY,
+            algorithms=['HS256']
+        )
+        user_info = db.users.find_one({"email": payload["id"]})
+        # cars = db.cars.find()
+        # cars = list(db.cars.find())
+        is_admin = user_info.get("category") == "admin"
+        logged_in = True
+        return render_template('/templates_user/cek_pesanan.html', user_info=user_info, logged_in = logged_in, is_admin=is_admin)
+    except jwt.ExpiredSignatureError:
+        msg = 'Your token has expired'
+    except jwt.exceptions.DecodeError:
+        msg = 'There was a problem logging you in'
+    return render_template('/templates_user/cek_pesanan.html', msg=msg)
 
 
 if __name__ == '__main__':

@@ -331,9 +331,9 @@
 
                 {% if logged_in %}
                 {% if is_admin %}
-                <a class="navbar-item" href="#">Cek Pesanan</a>
+                <a class="navbar-item" href="/cek_pesanan">Cek Pesanan</a>
                 {% else %}
-                <a class="navbar-item" href="/cekpesanan/{{user_info.name}}">Cek Pesanan</a>
+                <a class="navbar-item" href="/cek_pesanan/{{user_info.name}}">Cek Pesanan</a>
                 {% endif %}
                 {% endif %}
             </div>
