@@ -136,6 +136,40 @@ function sign_out() {
     // });
 }
 
+function submit() {
+    let nama = $("#nama").val();
+    let email = $("#email").val();
+    let phone = $("#phone").val();
+    let pesan = $("#pesan").val();
+
+    if (nama == '' || email == '' || phone == '' || pesan == '') {
+        Swal.fire(
+            'Oops',
+            'Data tidak lengkap!',
+            'error'
+        )
+    } else {
+    $.ajax({
+        type: "POST",
+        url: "/contact/save",
+        data: {
+            nama: nama,
+            email: email,
+            phone: phone,
+            pesan: pesan,
+        },
+        success: function (response) {
+            Swal.fire(
+                'Done',
+                'You are signed up, nice!',
+                'success'
+            )
+            window.location.replace("/contact");
+            },
+        });
+    }
+}
+
 function openModal() {
     const modal = document.getElementById('modal');
     modal.classList.add('is-active');

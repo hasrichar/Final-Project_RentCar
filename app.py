@@ -44,23 +44,19 @@ def main():
             algorithms=['HS256']
         )
 
-        # Check if payload contains the "id" attribute
         if "id" in payload:
             user_info = db.users.find_one({"email": payload["id"]})
 
-            # Check if user_info is not None before accessing its attributes
             if user_info is not None:
                 is_admin = user_info.get("category") == "admin"
                 logged_in = True
                 print(user_info)
                 return render_template('templates_user/home.html', user_info=user_info, logged_in=logged_in, is_admin=is_admin)
             else:
-                # Handle the case where user_info is None
                 msg = 'User not found'
                 return render_template('templates_user/home.html', msg=msg)
 
         else:
-            # Handle the case where "id" is not present in the payload
             msg = 'Invalid token payload'
             return render_template('templates_user/home.html', msg=msg)
 
@@ -239,34 +235,102 @@ def logout():
 
 @app.route('/syaratketentuan')
 def syaratketentuan():
-    return render_template('/templates_user/syaratketentuan.html')
+    token_receive = request.cookies.get(TOKEN_KEY)
+    try:
+        payload =jwt.decode(
+            token_receive,
+            SECRET_KEY,
+            algorithms=['HS256']
+        )
+        user_info = db.users.find_one({"email": payload["id"]})
+        # cars = db.cars.find()
+        # cars = list(db.cars.find())
+        is_admin = user_info.get("category") == "admin"
+        logged_in = True
+        return render_template('/templates_user/syaratketentuan.html', user_info=user_info, logged_in = logged_in, is_admin=is_admin)
+    except jwt.ExpiredSignatureError:
+        msg = 'Your token has expired'
+    except jwt.exceptions.DecodeError:
+        msg = 'There was a problem logging you in'
+    return render_template('/templates_user/syaratketentuan.html', msg=msg)
 
 @app.route('/carapemesanan')
 def carapemesanan():
-    return render_template('/templates_user/cara_pemesanan.html')
+    token_receive = request.cookies.get(TOKEN_KEY)
+    try:
+        payload =jwt.decode(
+            token_receive,
+            SECRET_KEY,
+            algorithms=['HS256']
+        )
+        user_info = db.users.find_one({"email": payload["id"]})
+        # cars = db.cars.find()
+        # cars = list(db.cars.find())
+        is_admin = user_info.get("category") == "admin"
+        logged_in = True
+        return render_template('/templates_user/cara_pemesanan.html', user_info=user_info, logged_in = logged_in, is_admin=is_admin)
+    except jwt.ExpiredSignatureError:
+        msg = 'Your token has expired'
+    except jwt.exceptions.DecodeError:
+        msg = 'There was a problem logging you in'
+    return render_template('/templates_user/cara_pemesanan.html', msg=msg)
 
 @app.route('/about')
 def about():
-    return render_template('/templates_user/about.html')
+    token_receive = request.cookies.get(TOKEN_KEY)
+    try:
+        payload =jwt.decode(
+            token_receive,
+            SECRET_KEY,
+            algorithms=['HS256']
+        )
+        user_info = db.users.find_one({"email": payload["id"]})
+        # cars = db.cars.find()
+        # cars = list(db.cars.find())
+        is_admin = user_info.get("category") == "admin"
+        logged_in = True
+        return render_template('/templates_user/about.html', user_info=user_info, logged_in = logged_in, is_admin=is_admin)
+    except jwt.ExpiredSignatureError:
+        msg = 'Your token has expired'
+    except jwt.exceptions.DecodeError:
+        msg = 'There was a problem logging you in'
+    return render_template('/templates_user/about.html', msg=msg)
 
 @app.route('/contact')
 def contact():
-    return render_template('/templates_user/contact.html')
+    token_receive = request.cookies.get(TOKEN_KEY)
+    try:
+        payload =jwt.decode(
+            token_receive,
+            SECRET_KEY,
+            algorithms=['HS256']
+        )
+        user_info = db.users.find_one({"email": payload["id"]})
+        # cars = db.cars.find()
+        # cars = list(db.cars.find())
+        is_admin = user_info.get("category") == "admin"
+        logged_in = True
+        return render_template('/templates_user/contact.html', user_info=user_info, logged_in = logged_in, is_admin=is_admin)
+    except jwt.ExpiredSignatureError:
+        msg = 'Your token has expired'
+    except jwt.exceptions.DecodeError:
+        msg = 'There was a problem logging you in'
+    return render_template('/templates_user/contact.html', msg=msg)
     
-@app.route('/contact_save', methods=['POST'])
+@app.route('/contact/save', methods=['POST'])
 def contact_save():
     nama = request.form.get('nama')
     email = request.form.get('email')
     phone = request.form.get('phone')
-    message = request.form.get('message')
+    pesan = request.form.get('pesan')
 
-    print(f"Received data: {nama}, {email}, {phone}, {message}")
+    print(f"Received data: {nama}, {email}, {phone}, {pesan}")
 
     doc = {
         "nama": nama,
         "email": email,
         "phone": phone,
-        "pesan": message
+        "pesan": pesan
     }
     db.contact.insert_one(doc)
     return jsonify({'result': 'success'})
@@ -275,37 +339,24 @@ def contact_save():
 @app.route('/add_car', methods=['GET', 'POST'])
 def add_car():
     if request.method == 'POST':
-        # Retrieve form data
         judul = request.form.get('judul')
         harga_rental = request.form.get('harga_rental')
-
-        # Handle image upload
         image = request.files['image']
-        # Process the image (save to a folder, etc.)
 
-        # Insert the car details into the MongoDB database
         db.cars.insert_one({
             'judul': judul,
             'harga_rental': harga_rental,
-            'image_path': 'path/to/uploaded/image.jpg'  # Update with the actual path
+            'image_path': 'path/to/uploaded/image.jpg'
         })
-
-        # Redirect to the admin home page after adding the car
         return redirect(url_for('home_admin'))
-
-    # Retrieve all cars from the database
     cars = db.cars.find()
-
-    # Render the form for car input along with the list of cars
     return render_template('templates_admin/add_car.html', cars=cars)
 
 
 @app.route('/edit_car/<car_id>', methods=['GET', 'POST'])
 def edit_car(car_id):
-    # Fetch car details from the database using car_id
     car_details = db.cars.find_one({'_id': ObjectId(car_id)})
 
-    # Handle both GET (display form) and POST (update data) requests
     if request.method == 'POST':
 
         return redirect(url_for('home_admin'))
@@ -324,7 +375,24 @@ def delete_car(car_id):
 
 @app.route('/detail')
 def detail():
-    return render_template('/templates_user/detail.html')
+    token_receive = request.cookies.get(TOKEN_KEY)
+    try:
+        payload =jwt.decode(
+            token_receive,
+            SECRET_KEY,
+            algorithms=['HS256']
+        )
+        user_info = db.users.find_one({"email": payload["id"]})
+        # cars = db.cars.find()
+        # cars = list(db.cars.find())
+        is_admin = user_info.get("category") == "admin"
+        logged_in = True
+        return render_template('/templates_user/detail.html', user_info=user_info, logged_in = logged_in, is_admin=is_admin)
+    except jwt.ExpiredSignatureError:
+        msg = 'Your token has expired'
+    except jwt.exceptions.DecodeError:
+        msg = 'There was a problem logging you in'
+    return render_template('/templates_user/detail.html', msg=msg)
 
 @app.route('/cek_pesanan/<user_info>')
 def cek_pesanan(user_info):

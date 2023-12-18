@@ -17,9 +17,10 @@
     crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/de152fe019.js" crossorigin="anonymous"></script>
-    <script src="{{ url_for('static', filename='index.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+
     <title>RentCar | Contact</title>
 </head>
 
@@ -157,25 +158,9 @@
     }
 
     .contact {
-        width: 95%;
-        max-width: 800px;
-        margin: 130px auto 130px auto;
-        padding: 20px;
-        box-shadow: 0px 0px 3px 0px black;
+        margin-top: 15%;
+        margin-bottom: 15%;
     }
-
-    .btns {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        margin-top: 20px;
-    }
-
-    .btns>button {
-        margin-right: 10px;
-    }
-
 
     .is-footer-link {
         background-color: transparent;
@@ -222,7 +207,7 @@
     }
 
     .is-user-info:hover {
-        background-color: #40513B;
+        background-color: #ffffff;
         border: none;
         color: #40513B;
         border-radius: 20px;
@@ -284,43 +269,6 @@
         }
     }
 </style>
-
-<script>
-    
-    function kontak() {
-    let nama = $("#nama").val();
-    let email = $("#email").val();
-    let pesan = $("#pesan").val();
-
-    if (nama == '' || email == '' || pesan == '') {
-        Swal.fire(
-            'Oops',
-            'Data tidak lengkap!',
-            'error'
-        )
-    } else {
-        $.ajax({
-            type: "POST",
-            url: "/contact/save",
-            data: {
-                nama: nama,
-                email: email,
-                pesan: pesan
-            },
-            success: function (response) {
-                Swal.fire(
-                    'Done',
-                    'You are signed up, nice!',
-                    'success'
-                )
-                window.location.replace("/contact");
-            },
-        });
-    }
-
-
-}
-</script>
 
 <script>
     function toggleNavbar() {
@@ -398,17 +346,17 @@
         <section class="py-5">
             <div class="container px-5">
                 <!-- Contact form-->
-                <div class="bg-light rounded-4 py-5 px-4 px-md-5">
+                <div class="bg-light rounded-4 py-5 px-4 px-md-5" id="contact">
                     <div class="text-center mb-5">
-                        <h1 class="fw-bolder">Contact</h1>
-                        <p class="lead fw-normal text-muted mb-0">Let's work together!</p>
+                        <h1 class="fw-bolder"><i class="bi bi-envelope-fill"></i></h1>
+                        <p class="lead fw-normal text-muted mb-0">Tuliskan pesan disini!</p>
                     </div>
                     <div class="row gx-5 justify-content-center">
                         <div class="col-lg-8 col-xl-6">
-                                <form action="{{ url_for('contact_save') }}" method="POST">
+                                <form>
                                     <!-- Name input -->
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" name="nama" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
+                                        <input class="form-control" name="nama" id="nama" type="text" placeholder="Enter your name..." data-sb-validations="required" />
                                         <label for="name">Full name</label>
                                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                                     </div>
@@ -430,14 +378,14 @@
                                 
                                     <!-- Message -->
                                     <div class="form-floating mb-3">
-                                        <textarea class="form-control" name="pesan" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
+                                        <textarea class="form-control" name="pesan" id="pesan" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
                                         <label for="message">Message</label>
                                         <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
                                     </div>
                                 
                                     <!-- Submit Button-->
                                     <div class="d-grid">
-                                        <button class="btn btn-primary btn-lg" id="submitButton" type="submit" style="background-color: #d6d2bf; color: black; border: none;">Submit</button>
+                                        <button class="btn btn-primary btn-lg" onclick="submit()" id="submitButton" type="submit" style="background-color: #d6d2bf; color: black; border: none;">Submit</button>
                                     </div>
                                 </form>                              
                         </div>
