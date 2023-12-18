@@ -107,7 +107,7 @@
                 </a>
             </div>
             <div class="list-item">
-                <a href="cek_booking">
+                <a href="/cek_booking">
                     <img src="/static/asset/5.png" alt="" class="icon">
                     <span class="description">Cek Booking</span>
                 </a>
@@ -125,7 +125,6 @@
         <div class="card-body">
             <div class="table-responsive">
                 <a href="{{ url_for('add_car') }}" class="btn btn-success">Add Car</a>
-    
                 <table class="table table-bordered table-hovered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -149,14 +148,13 @@
                             </td>
                             <td>
                                 <div class="d-flex justify-content-end">
-                                    <a href="{{ url_for('edit_car', car_id=car.id) }}" class="btn btn-warning">Edit</a>
-                                    <a href="{{ url_for('delete_car', car_id=car.id) }}" class="btn btn-danger">Delete</a>
+                                    <a href="{{ url_for('edit_car', cars_id=car.id) }}" class="btn btn-warning">Edit</a>
+                                    <a href="{{ url_for('delete_car', cars_id=car.id) }}" class="btn btn-danger">Delete</a>
                                 </div>
                             </td>
                         </tr>
                         {% endfor %}
                     </tbody>
-                    
                 </table>
             </div>
         </div>

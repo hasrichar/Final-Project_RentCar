@@ -301,8 +301,6 @@ def contact_save():
     phone = request.form.get('phone')
     pesan = request.form.get('pesan')
 
-    print(f"Received data: {nama}, {email}, {phone}, {pesan}")
-
     doc = {
         "nama": nama,
         "email": email,
@@ -310,10 +308,7 @@ def contact_save():
         "pesan": pesan
     }
     db.contact.insert_one(doc)
-
-    # Instead of using jsonify, you can return a plain response
-    return 'Data saved successfully!'
-
+    return render_template('/templates_user/contact.html')
 
 @app.route('/add_car', methods=['GET', 'POST'])
 def add_car():
@@ -332,25 +327,31 @@ def add_car():
     return render_template('templates_admin/add_car.html', cars=cars)
 
 
-@app.route('/edit_car/<car_id>', methods=['GET', 'POST'])
-def edit_car(car_id):
-    car_details = db.cars.find_one({'_id': ObjectId(car_id)})
+@app.route('/edit_car/<cars_id>', methods=['GET', 'POST'])
+def edit_car(cars_id):
+    cars = db.cars.find_one({'_id': ObjectId(cars_id)})
 
     if request.method == 'POST':
-
+        db.cars.update_one(
+            {'_id': ObjectId(cars_id)},
+            {'$set': {
+                'judul': request.form.get('judul'),
+                'harga_rental': request.form.get('harga_rental'),
+            }}
+        )
         return redirect(url_for('home_admin'))
 
-    return render_template('templates_admin/edit_car.html', car=car_details)
+    return render_template('templates_admin/edit_car.html', cars=cars)
 
-@app.route('/delete_car/<car_id>', methods=['GET', 'POST'])
-def delete_car(car_id):
-
-    car_details = db.cars.find_one({'_id': ObjectId(car_id)})
+@app.route('/delete_car/<cars_id>', methods=['GET', 'POST'])
+def delete_car(cars_id):
+    cars = db.cars.find_one({'_id': ObjectId(cars_id)})
 
     if request.method == 'POST':
-    
+        db.cars.delete_one({'_id': ObjectId(cars_id)})
         return redirect(url_for('home_admin'))
-    return render_template('templates_admin/edit_car.html', car=car_details)
+
+    return render_template('templates_admin/home.html', cars=cars)
 
 @app.route('/detail')
 def detail():
