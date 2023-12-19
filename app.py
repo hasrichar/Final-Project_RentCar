@@ -18,15 +18,11 @@ from babel.numbers import format_currency
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
+MONGODB_URI = os.environ.get("MONGODB_URI")
+DB_NAME =  os.environ.get("DB_NAME")
 
-# MONGODB_URI = os.environ.get("MONGODB_URI")
-# DB_NAME =  os.environ.get("DB_NAME")
-
-MONGODB_CONNECTION_STRING = 'mongodb+srv://test_ikakomalasari:sparta@test.nrkvr1l.mongodb.net/?retryWrites=true&w=majority'
-client = MongoClient(MONGODB_CONNECTION_STRING)
-db = client.rentcar
-# client = MongoClient(MONGODB_URI)
-# db = client[DB_NAME]
+client = MongoClient(MONGODB_URI)
+db = client[DB_NAME]
 
 app = Flask(__name__)
 
