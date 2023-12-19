@@ -1,19 +1,12 @@
 from flask import Flask, request, render_template, redirect, url_for, jsonify
 from pymongo import MongoClient
 from bson import ObjectId
-import requests
 import hashlib
-from datetime import datetime
-from bson import ObjectId
+from datetime import datetime, timedelta
 import os
 import jwt
-from datetime import datetime, timedelta
-from reportlab.pdfgen import canvas
-from reportlab.lib.utils import ImageReader
-import io
 from os.path import join, dirname
 from dotenv import load_dotenv
-from babel.numbers import format_currency
 
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
